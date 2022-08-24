@@ -1,0 +1,26 @@
+{
+  "name": "micro-capaa-base",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "pnpm --filter '*' run start",
+    "build": "pnpm --filter '*' run build",
+    "clean": "pnpm --filter '*' run clean"
+  },
+  "workspaces": {
+    "packages": [
+      "base",
+      "demo"
+    ]
+  },
+  "private": true,
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "author": "mc-fed",
+  "license": "ISC",
+  "devDependencies": {
+
+  }
+}
