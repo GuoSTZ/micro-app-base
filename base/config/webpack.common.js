@@ -1,109 +1,111 @@
+const chalk = require('chalk')
 const path = require('path');
-const chalk = require('chalk');
-const webpack = require('webpack');
+const htmlWebpackPlugin = require('html-webpack-plugin');
+// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// const CopyPlugin = require('copy-webpack-plugin'); // 复制文件
+const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 
-const ProgressBarPlugin = require('progress-bar-webpack-plugin');
-
-const { ModuleFederationPlugin } = webpack.container;
-
-const PORT = 9998
-const NAME_SPACE = 'app-capaa-platform'
-const REMOTE_PUBLIC = 'https://192.168.52.146:18443/'
+const PORT = 8088
+const NAME_SPACE = 'base'
 
 const resolveApp = relativePath => path.resolve(process.cwd(), relativePath)
 
-const getRemoteEntryUrl = (env, {name, port, url }) => {
-  if (env === 'production') {
-    return `${name}@[HOST_URL]${name}/remoteEntry.js`
+const addHtmlWebpackPlugin = ({ env, namespace, microFrontEndConfig }) => {
+  let options = {
+    ENV: 'production',
+    HOST_URL: '',
+    cssString: '',
+    jsString: '',
+    MicroFrontEndConfig: '',
   }
-
-  if (port) {
-    return `${name}@http://localhost:${port}/remoteEntry.js`;
+  if (env === 'development') {
+    options = {
+      ENV: 'development',
+      cssString: '',
+      publicPath: '/',
+      MicroFrontEndConfig: JSON.stringify(microFrontEndConfig),
+    }
   }
-
-  if (url) {
-    const newUrl = url.includes('//') ? url : `//${url}`
-    return `${name}@${newUrl}/remoteEntry.js`;
-  }
-
-  return `${name}@${REMOTE_PUBLIC}${name}/remoteEntry.js`;
+  return new htmlWebpackPlugin({
+    filename: 'index.html',
+    hash: true, // 为CSS文件和JS文件引入时，添加唯一的hash，破环缓存非常有用
+    template: resolveApp('./public/index.ejs'),
+    ...options,
+  })
 }
 
-const getModuleFederationPlugin = env => new ModuleFederationPlugin({
-  name: NAME_SPACE,
-  filename: 'remoteEntry.js',
-  remotes: {
-    'mc_common': getRemoteEntryUrl(env, { name: 'mc_common' }),
-    'mc_components': getRemoteEntryUrl(env, { name: 'mc_components' }),
-  }
-});
-
 const common = {
-  // externals: { }, // 外部引入的资源，避免打包到自己的bundle中
+  externals: {}, // 外部引入的资源，避免打包到自己的bundle中
   resolve: {
     alias: {
-      '@': resolveApp('./src')
+      '@': resolveApp('./src'),
+      handlebars: 'handlebars/dist/handlebars.js',
     },
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
-    mainFiles: ['index.js', 'index.jsx', 'index.ts', 'index.tsx']
+    mainFiles: ['index.js', 'index.jsx', 'index.ts', 'index.tsx'],
   },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        use: 'babel-loader',
         include: resolveApp('./src'),
-        exclude: /node_modules/
-        // enforce: 'pre',
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              plugins: [
+                [
+                  'import',
+                  {
+                    libraryName: 'antd',
+                    style: true,
+                  },
+                ],
+              ],
+            },
+          },
+        ],
       },
       {
         test: /\.(ts|tsx)$/,
         loader: 'ts-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
         test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
-        // 自动选择导出为单独文件还是url形式
         type: 'asset',
         parser: {
           dataUrlCondition: {
-            maxSize: 4 * 1024
-          }
+            maxSize: 10 * 1024, // 大于10kb将会启用file-loader将文件单独导出
+          },
         },
         generator: {
-          filename: 'images/[name][ext]'
-        }
+          filename: 'images/[name][ext]',
+        },
       },
       {
-        test: /\.(eot|svg|ttf|woff|woff2?)$/,
-        // 分割为单独文件，并导出url
+        test: /\.(eot|ttf|woff|woff2)$/,
         type: 'asset/resource',
         generator: {
-          filename: 'fonts/[hash][ext][query]'
-        }
-      }
-    ]
+          filename: 'fonts/[hash][ext][query]',
+        },
+      },
+    ],
   },
   plugins: [
-    // new CleanWebpackPlugin(), // output 已经配置了clean，还需要吗？
-    new webpack.DefinePlugin({ // 注入全局变量
-      ENV: JSON.stringify(process.env.NODE_ENV),
-      NAME_SPACE: JSON.stringify(NAME_SPACE),
-      HOST_NAME_SPACE: JSON.stringify(NAME_SPACE),
-      // API_VERSION: JSON.stringify(API_VERSION),
-      // PROJECTION: JSON.stringify(PROJECTION)
+    new ProgressBarPlugin({
+      // 进度条
+      format: `  :msg [:bar] ${chalk.green.bold(':percent')} (:elapsed s)`,
     }),
-    new ProgressBarPlugin({ // 进度条
-      format: `  :msg [:bar] ${chalk.green.bold(':percent')} (:elapsed s)`
-    })
-  ]
+  ],
 }
 
 module.exports = {
   PORT,
-  common,
   NAME_SPACE,
-  REMOTE_PUBLIC,
+  common,
   resolveApp,
-  getModuleFederationPlugin
+  addHtmlWebpackPlugin,
 }
