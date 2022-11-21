@@ -1,5 +1,6 @@
 const chalk = require('chalk')
 const path = require('path');
+const webpack = require('webpack');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 // const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 // const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -11,20 +12,18 @@ const NAME_SPACE = 'base'
 
 const resolveApp = relativePath => path.resolve(process.cwd(), relativePath)
 
-const addHtmlWebpackPlugin = ({ env, namespace, microFrontEndConfig }) => {
+const addHtmlWebpackPlugin = ({ env, namespace }) => {
   let options = {
-    ENV: 'production',
+    ENV: env,
     HOST_URL: '',
     cssString: '',
     jsString: '',
-    MicroFrontEndConfig: '',
   }
   if (env === 'development') {
     options = {
-      ENV: 'development',
+      ENV: env,
       cssString: '',
       publicPath: '/',
-      MicroFrontEndConfig: JSON.stringify(microFrontEndConfig),
     }
   }
   return new htmlWebpackPlugin({
@@ -98,6 +97,10 @@ const common = {
     new ProgressBarPlugin({
       // 进度条
       format: `  :msg [:bar] ${chalk.green.bold(':percent')} (:elapsed s)`,
+    }),
+    new webpack.DefinePlugin({ // 注入全局变量
+      ENV: JSON.stringify(process.env.NODE_ENV),
+      NAME_SPACE: JSON.stringify(NAME_SPACE),
     }),
   ],
 }
