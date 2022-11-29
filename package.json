@@ -5,12 +5,12 @@
   "scripts": {
     "start": "pnpm --filter '*' run start",
     "build": "pnpm --filter '*' run build",
-    "clean": "pnpm --filter '*' run clean"
+    "clean": "pnpm --filter '*' run clean && rm -rf node_modules"
   },
   "workspaces": {
     "packages": [
       "base",
-      "demo"
+      "home"
     ]
   },
   "private": true,
