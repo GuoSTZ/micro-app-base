@@ -1,71 +1,72 @@
 import {HomeOutlined, MailOutlined, PhoneOutlined, CalendarOutlined} from '@ant-design/icons';
 import React from 'react';
 import { RoutesType } from '.';
+import i18n, { locale } from '@/locales';
 
 const ModuleRoutes: RoutesType[] = [
   {
     path: "home/*",
-    name: "首页",
+    name: i18n.t("base.menu.homePage"),
     icon: <HomeOutlined />,
     element: <div>首页</div>
   },
   {
     path: "menuOne/*",
-    name: "菜单一",
+    name: i18n.t("base.menu.one"),
     icon: <MailOutlined />,
     children: [
       {
         path: "moduleA",
         id: "moduleA",
-        name: "模块A",
+        name: i18n.t("base.menu.modules.A"),
         element: <div>模块A</div>,
       },
       {
         path: "moduleB",
         id: "moduleB",
-        name: "模块B",
+        name: i18n.t("base.menu.modules.B"),
         element: <div>模块B</div>,
       }
     ]
   },
   {
     path: "menuTwo/*",
-    name: "菜单二",
+    name: i18n.t("base.menu.two"),
     icon: <PhoneOutlined />,
     children: [
       {
         path: "moduleC",
         id: "moduleC",
-        name: "模块C",
+        name: i18n.t("base.menu.modules.C"),
         element: <div>模块C</div>,
       },
       {
         path: "moduleD",
         id: "moduleD",
-        name: "模块D",
+        name: i18n.t("base.menu.modules.D"),
         element: <div>模块D</div>,
       },
       {
         path: "moduleE",
         id: "moduleE",
-        name: "模块E",
+        name: i18n.t("base.menu.modules.E"),
         element: <div>模块E</div>,
       }
     ]
   },
   {
     path: "menuThree/*",
-    name: "菜单三",
+    name: i18n.t("base.menu.three"),
     icon: <CalendarOutlined />,
     children: [
       {
         path: "menuThreeOne/*",
-        name: "菜单三一",
+        name: i18n.t("base.menu.threeOne"),
         children: [
           {
             path: "moduleF",
             id: "moduleF",
-            name: "模块F",
+            name: i18n.t("base.menu.modules.F"),
             element: <div>模块F</div>,
           }
         ]
@@ -73,7 +74,7 @@ const ModuleRoutes: RoutesType[] = [
       {
         path: "moduleG",
         id: "moduleG",
-        name: "模块G",
+        name: i18n.t("base.menu.modules.G"),
         element: <div>模块G</div>,
       }
     ]

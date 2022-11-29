@@ -1,0 +1,21 @@
+{
+  "base": {
+    "HEADER": "BASE",
+    "menu": {
+      "homePage": "HomePage",
+      "one": "Menu One",
+      "two": "Menu Two",
+      "three": "Menu Three",
+      "threeOne": "Menu Three One",
+      "modules": {
+        "A": "Module A",
+        "B": "Module B",
+        "C": "Module C",
+        "D": "Module D",
+        "E": "Module E",
+        "F": "Module F",
+        "G": "Module G"
+      }
+    }
+  }
+}

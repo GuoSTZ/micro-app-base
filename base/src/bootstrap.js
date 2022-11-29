@@ -1,7 +1,8 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import App from '@/views/App'
+import App from '@/views/App';
+import '@/locales';
 
 const container = document.getElementById('root');
 const root = createRoot(container);

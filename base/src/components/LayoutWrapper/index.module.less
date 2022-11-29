@@ -1,17 +1,46 @@
 .baseLayout {
   height: 100vh;
 
+  @headerHeight: 48px;
+  
   .baseHeader {
     display: flex;
-    align-items: center;
+    height: @headerHeight;
+    padding-inline: 16px;
+    line-height: @headerHeight;
     color: #fff;
 
-    :global {
-      span {
-        height: 24px;
+    .leftHeader {
+      display: flex;
+      height: 100%;
+      align-items: center;
+
+      > span {
         margin-left: 8px;
-        line-height: 24px;
+      }
+    }
+
+    .emptyBlock {
+      flex: 1;
+    }
+
+    .rightHeader {
+      :global {
+        .ant-space-item {
+          height: 100%;
+        }
+      }
+
+      .translateIcon {
+        display: inline-flex;
+        padding: 15px;
         font-size: 18px;
+        cursor: pointer;
+        transition: all .3s;
+
+        &:hover {
+          background-color: #252A3D;
+        }
       }
     }
   }

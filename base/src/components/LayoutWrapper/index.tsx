@@ -1,10 +1,13 @@
-import { Layout, Menu } from 'antd';
+import { Layout, Menu, Space } from 'antd';
 import { MenuItemType } from 'antd/lib/menu/hooks/useItems';
 import { cloneDeep } from 'lodash'
-import React, { useState, useCallback, useEffect, useLayoutEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import ErrorBoundary from '../ErrorBoundary';
 import Breadcrumb from '../Breadcrumb';
+import DropdownWrapper from '../DropdownWrapper';
+import translateSvg from './images/translate.svg';
+import {locale, changeLanguage} from '@/locales';
 import styles from './index.module.less';
 
 type RoutesJsonType = {
@@ -71,12 +74,31 @@ const LayoutWrapper: React.FC<any> = props => {
     setOpenKeys(keys);
   }
 
+  const languages = [
+    {label: "简体中文", key: "zh-CN"}, 
+    {label: "English", key: "en-US"}
+  ]
+
   return (
     <ErrorBoundary>
       <Layout className={styles.baseLayout}>
         <Header className={styles.baseHeader}>
-          <img src="/logo192.png" alt="" width={24} />
-          <span>BASE</span>
+          <div className={styles.leftHeader}>
+            <img src="/logo192.png" alt="" width={24} />
+            <span>{locale("base.HEADER")}</span>
+          </div>
+          <div className={styles.emptyBlock}></div>
+          <Space className={styles.rightHeader}>
+            <DropdownWrapper 
+              menu={{ items: languages, onClick: (options: any) => {
+                changeLanguage(options?.key);
+                window.location.reload();
+              } }}>
+              <span className={styles.translateIcon}>
+                <img src={translateSvg} alt="" width={18} />
+              </span>
+            </DropdownWrapper>
+          </Space>
         </Header>
         <Layout>
           <Sider width={200}>

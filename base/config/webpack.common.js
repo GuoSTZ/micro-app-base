@@ -85,7 +85,7 @@ const common = {
         },
       },
       {
-        test: /\.(eot|ttf|woff|woff2)$/,
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
         type: 'asset/resource',
         generator: {
           filename: 'fonts/[hash][ext][query]',

@@ -22,14 +22,22 @@ i18n
 	.use(initReactI18next)
 	.init({ // 配置选项：https://www.i18next.com/overview/configuration-options
 		resources,
-		lng: navigator.language, // 指定语言为浏览器当前语言
-		// lng: 'zh-CN', // 指定语言
+		// lng: navigator.language, // 指定语言为浏览器当前语言
+		// lng: 'en-US', // 指定语言
+		lng: localStorage.i18nextLng,
 		fallbackLng: 'zh-CN', // 指定了未匹配任何语言时的默认语言
-		preload: ['zh-CN', 'en-US'], // 预加载
+		preload: ['zh-CN'], // 预加载
 		interpolation: {
 			escapeValue: false,
 		},
 	});
 
 export default i18n;
-export const locale = i18n.t;
+
+const changeLanguage = (value: keyof typeof resources) => {
+	i18n.changeLanguage(value);
+}
+
+const locale = i18n.t;
+
+export {locale, changeLanguage};

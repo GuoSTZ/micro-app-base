@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "rootDir": "./src",//源码目录
+    "rootDir": "./src", //源码目录
     "target": "es5", // 指定输出 ECMAScript 目标版本
     "module": "ESNext", //面向未来的ESM模块化
     "strict": true, // 开启所有的严格检查配置
@@ -8,15 +8,15 @@
     "outDir": "./build/",
     /* 指定要包含在编译中的库文件——引用类库——即申明文件，如果输出的模块方式是 es5，就会默认引入 "dom","es5","scripthost" 。如果在 TS 中想要使用一些 ES6 以上版本的语法，就需要引入相关的类库 */
     "lib": [
-        "webworker",
-        "dom",
-        "es5",
-        "es2015",
-        "es2016",
-        "es2015.promise",
-        "dom.iterable",
-        "scripthost",
-        "esnext",
+      "webworker",
+      "dom",
+      "es5",
+      "es2015",
+      "es2016",
+      "es2015.promise",
+      "dom.iterable",
+      "scripthost",
+      "esnext",
     ], // 要包含在编译中的依赖库文件列表
     "allowJs": true, // 允许编译 JavaScript 文件
     // 检查 JS 文件
@@ -49,21 +49,21 @@
     // 不允许把 null、undefined 赋值给其他类型变量
     "strictNullChecks": false,
     "plugins": [
-      { 
-        "name": "typescript-plugin-css-modules" 
+      {
+        "name": "typescript-plugin-css-modules"
       }
     ],
     "paths": {
-        //别名
-        "@/*": [
-            "src/*"
-        ],
-        "~/*": [
-          "src/components/*"
+      //别名
+      "@/*": [
+        "src/*"
       ],
-        "@images/*": [
-            "src/assets/images/*"
-        ],
+      "~/*": [
+        "src/components/*"
+      ],
+      "@images/*": [
+        "src/assets/images/*"
+      ],
     }
   },
   "include": [
