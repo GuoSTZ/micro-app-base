@@ -104,6 +104,7 @@ const LayoutWrapper: React.FC<any> = props => {
           <Sider width={200}>
             <Menu
               mode="inline"
+              className={styles.menu}
               selectedKeys={pathKeys}
               openKeys={openKeys}
               style={{ height: '100%', borderRight: 0 }}
