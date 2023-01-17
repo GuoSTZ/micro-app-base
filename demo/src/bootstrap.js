@@ -13,9 +13,7 @@ global.API_PREFIX = 'http://git.mchz.com.cn/api/v4';
 
 const App= () => {
   const View = useRoutes(routes)
-  return <div>
-          {View}
-        </div>
+  return View
 }
 
 root.render(

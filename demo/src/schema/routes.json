@@ -4,6 +4,10 @@
     "element": "ListView"
   },
   {
+    "path": "add",
+    "element": "FormView"
+  },
+  {
     "path": "edit/:id",
     "element": "FormView"
   },

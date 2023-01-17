@@ -1,0 +1,17 @@
+{
+  "descriptions": {
+    "bordered": true,
+    "column": 2,
+    "title": "查看"
+  },
+  "columns": {
+    "type": "object",
+    "properties": {
+      "test": {
+        "type": "string",
+        "title": "测试",
+        "dataIndex": "test"
+      }
+    }
+  }
+}
