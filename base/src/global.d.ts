@@ -1,9 +1,9 @@
-declare const NAME_SPACE: string
-declare const VERSION: string
+declare const NAME_SPACE: string;
+declare const API_PREFIX: string;
 
 declare namespace NodeJS {
   interface Global {
-    CAPAA_API_PREFIX: string
+    API_PREFIX: string
   }
 }
 declare module '*.svg' {

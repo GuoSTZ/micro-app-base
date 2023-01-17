@@ -2,6 +2,7 @@
   "base": {
     "HEADER": "基础构建",
     "menu": {
+      "demo": "测试",
       "homePage": "首页",
       "one": "菜单一",
       "two": "菜单二",

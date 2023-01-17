@@ -1,6 +1,4 @@
 import './public-path';
-import { ConfigProvider } from 'antd';
-import zhCN from 'antd/locale/zh_CN';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, useRoutes } from 'react-router-dom';
@@ -18,10 +16,8 @@ const App= () => {
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <ConfigProvider locale={zhCN}>
-        <App />
-      </ConfigProvider>
+    <BrowserRouter basename={window.__MICRO_APP_BASE_ROUTE__ || '/demo'}>
+      <App />
     </BrowserRouter>
   </React.StrictMode>
 )

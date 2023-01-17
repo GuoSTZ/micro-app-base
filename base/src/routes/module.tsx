@@ -1,14 +1,30 @@
 import {HomeOutlined, MailOutlined, PhoneOutlined, CalendarOutlined} from '@ant-design/icons';
 import React from 'react';
+import MicroApp from '@/components/MicroApp';
 import { RoutesType } from '.';
+import { config } from './config';
 import i18n, { locale } from '@/locales';
+import Home from '@/views/Home';
+
+const getConfig = (name: string) => {
+  return {
+    name,
+    ...config[name]
+  }
+}
 
 const ModuleRoutes: RoutesType[] = [
+  {
+    path: "demo/*",
+    name: i18n.t("base.menu.demo"),
+    icon: <HomeOutlined />,
+    element: <MicroApp {...getConfig('demo')}/>
+  },
   {
     path: "home/*",
     name: i18n.t("base.menu.homePage"),
     icon: <HomeOutlined />,
-    element: <div>首页</div>
+    element: <Home />
   },
   {
     path: "menuOne/*",
