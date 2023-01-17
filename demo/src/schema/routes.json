@@ -1,0 +1,14 @@
+[
+  {
+    "path": "/*",
+    "element": "ListView"
+  },
+  {
+    "path": "edit/:id",
+    "element": "FormView"
+  },
+  {
+    "path": "detail/:id",
+    "element": "DetailView"
+  }
+]
