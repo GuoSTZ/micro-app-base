@@ -10,7 +10,7 @@
   "workspaces": {
     "packages": [
       "base",
-      "home"
+      "demo"
     ]
   },
   "private": true,
