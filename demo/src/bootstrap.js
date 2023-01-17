@@ -9,7 +9,7 @@ import routes from './router';
 const container = document.getElementById('root');
 const root = createRoot(container);
 
-global.API_PREFIX = 'http://git.mchz.com.cn/api/v4';
+global.API_PREFIX = 'http://localhost:3000';
 
 const App= () => {
   const View = useRoutes(routes)
