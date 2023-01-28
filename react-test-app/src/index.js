@@ -13,7 +13,12 @@ root.render(
 );
 
 window.unmount = () => {
+  console.log(`${window.__MICRO_APP_NAME__}子应用已经卸载`)
   root.unmount()
+}
+
+window.onmount = (data) => {
+  console.log(`${window.__MICRO_APP_NAME__}子应用已经渲染`, data)
 }
 
 // If you want to start measuring performance in your app, pass a function

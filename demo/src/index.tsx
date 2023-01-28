@@ -10,23 +10,25 @@ const root = createRoot(container);
 
 global.API_PREFIX = 'http://localhost:3000';
 
-const App= () => {
+const App = () => {
   const View = useRoutes(routes)
   return View
 }
 
 window.unmount = () => {
-  console.log(`${NAME_SPACE}子应用已经卸载`)
+  console.log(`${window.__MICRO_APP_NAME__}子应用已经卸载`)
   root.unmount()
 }
 
 window.onmount = (data) => {
-  console.log(`${NAME_SPACE}子应用已经渲染`, data)
+  console.log(`${window.__MICRO_APP_NAME__}子应用已经渲染`, data)
 }
+
+const mergedBaseName = window.__MICRO_APP_BASE_ROUTE__ ? `${window.__MICRO_APP_BASE_ROUTE__}/${window.__MICRO_APP_NAME__}` : window.__MICRO_APP_NAME__
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter basename={window.__MICRO_APP_BASE_ROUTE__ ?? '/demo'}>
+    <BrowserRouter basename={mergedBaseName}>
       <App />
     </BrowserRouter>
   </React.StrictMode>
