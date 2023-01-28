@@ -1,15 +1,14 @@
 import React, { useEffect } from 'react';
-import * as actions from '@/action';
 import FlipClock from '@/components/FlipClock';
+import styles from './index.module.less';
 
 export default () => {
 
   useEffect(() => {
-    // actions.fetchData({})
   }, [])
 
   return (
-    <div>
+    <div className={styles.Home}>
       <FlipClock />
     </div>
   )
