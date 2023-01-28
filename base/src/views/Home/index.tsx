@@ -1,13 +1,16 @@
 import React, { useEffect } from 'react';
 import * as actions from '@/action';
+import FlipClock from '@/components/FlipClock';
 
 export default () => {
 
   useEffect(() => {
-    actions.fetchData({})
+    // actions.fetchData({})
   }, [])
 
   return (
-    <div>Home</div>
+    <div>
+      <FlipClock />
+    </div>
   )
 }

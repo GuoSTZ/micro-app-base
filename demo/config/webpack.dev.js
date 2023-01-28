@@ -20,49 +20,46 @@ const {
 
 const env = "development"
 module.exports = merge(common, {
-  target: 'web',
+  // target: 'web',
   mode: env,
   entry: './src/index', // 入口文件
   // 开发工具，开启 source map，编译调试
-  devtool: 'eval-cheap-module-source-map',
-  cache: {
-    type: 'filesystem', // 启用持久化缓存
-    cacheDirectory: resolveApp('.cache'), // 缓存文件存放的位置
-    name: 'development-cache',
-    buildDependencies: {
-      // 缓存失效的配置
-      config: [__filename],
-    },
-  },
+  // devtool: 'eval-cheap-module-source-map',
+  // cache: {
+  //   type: 'filesystem', // 启用持久化缓存
+  //   cacheDirectory: resolveApp('.cache'), // 缓存文件存放的位置
+  //   name: 'development-cache',
+  //   buildDependencies: {
+  //     // 缓存失效的配置
+  //     config: [__filename],
+  //   },
+  // },
   devServer: {
-    host: 'localhost',
+    // host: 'localhost',
     port: PORT,
     headers: { //micro 跨域设置
       'Access-Control-Allow-Origin': '*',
     },
     open: true, // 自动打开页面
-    hot: true, // 默认为true
-    compress: true, // 是否开启代码压缩
+    // hot: true, // 默认为true
+    // compress: true, // 是否开启代码压缩
     // watchContentBase: true,
     historyApiFallback: true,
-    allowedHosts: 'all',
-    static: {
-      // 托管的静态资源文件, 可通过数组的方式托管多个静态资源文件
-      directory: resolveApp('./public'),
-    },
-    // watchOptions: {
-    //   ignored: /node_modules/,
+    // allowedHosts: 'all',
+    // static: {
+    //   // 托管的静态资源文件, 可通过数组的方式托管多个静态资源文件
+    //   directory: resolveApp('./public'),
     // },
-    client: {
-      progress: true, // 在浏览器端打印编译进度
-      overlay: {
-        // 只显示错误信息
-        errors: true,
-        warnings: false,
-      },
-      logging: 'warn', // 控制台只显示warn以上信息
-    },
-    proxy: {},
+    // client: {
+    //   progress: true, // 在浏览器端打印编译进度
+    //   overlay: {
+    //     // 只显示错误信息
+    //     errors: true,
+    //     warnings: false,
+    //   },
+    //   logging: 'warn', // 控制台只显示warn以上信息
+    // },
+    // proxy: {},
   },
   module: {
     rules: [

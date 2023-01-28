@@ -118,7 +118,6 @@ const LayoutWrapper: React.FC<any> = props => {
             <Content
               className={styles.baseContent}
               style={{
-                padding: 24,
                 margin: 0,
                 minHeight: 280,
               }}

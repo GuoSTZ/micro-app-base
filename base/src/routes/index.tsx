@@ -15,7 +15,7 @@ export type RoutesType = {
 const rootRoutes: Array<RoutesType> = [
   {
     path: "/",
-    element: <Navigate to={`${NAME_SPACE}/demo`} />
+    element: <Navigate to={`${NAME_SPACE}/home`} />
   },
   {
     path: `${NAME_SPACE}/*`,
@@ -30,7 +30,7 @@ const rootRoutes: Array<RoutesType> = [
   },
   {
     path: "*",
-    element: <Navigate to={`${NAME_SPACE}/demo`} />
+    element: <Navigate to={`${NAME_SPACE}/home`} />
   },
 ]
 

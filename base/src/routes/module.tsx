@@ -94,7 +94,13 @@ const ModuleRoutes: RoutesType[] = [
         element: <div>模块G</div>,
       }
     ]
-  }
+  },
+  {
+    path: "reactTestApp/*",
+    name: i18n.t("base.menu.reactTestApp"),
+    icon: <HomeOutlined />,
+    element: <MicroApp {...getConfig('reactTestApp')}/>
+  },
 ]
 
 export default ModuleRoutes;

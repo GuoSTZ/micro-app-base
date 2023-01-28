@@ -1,4 +1,6 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
+import './index.less';
 
 export interface MicroAppProps {
   name: string;
@@ -8,8 +10,9 @@ export interface MicroAppProps {
 export default function MicroApp(props: MicroAppProps) {
   const { name, url } = props;
   return (
-    <div>
+    <React.Fragment>
       <micro-app name={name} url={url}></micro-app>
-    </div>
+      <Outlet />
+    </React.Fragment>
   )
 }

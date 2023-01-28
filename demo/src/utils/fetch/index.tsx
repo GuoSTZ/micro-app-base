@@ -1,9 +1,8 @@
-import axios, { AxiosRequestConfig} from 'axios';
+import axios from 'axios';
+import { AxiosRequestConfig } from './type'
 
 const instance = axios.create({
-  headers: {
-    'PRIVATE-TOKEN': 'wSd84Z1H3YALYze6qwm_'
-  }
+  headers: {}
 })
 
 export const fetchPost = async (url: string, params: object, config: AxiosRequestConfig<object>) => {
