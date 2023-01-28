@@ -15,12 +15,6 @@ const getConfig = (name: string) => {
 
 const ModuleRoutes: RoutesType[] = [
   {
-    path: "demo/*",
-    name: i18n.t("base.menu.demo"),
-    icon: <HomeOutlined />,
-    element: <MicroApp {...getConfig('demo')}/>
-  },
-  {
     path: "home/*",
     name: i18n.t("base.menu.homePage"),
     icon: <HomeOutlined />,
@@ -100,6 +94,12 @@ const ModuleRoutes: RoutesType[] = [
     name: i18n.t("base.menu.reactTestApp"),
     icon: <HomeOutlined />,
     element: <MicroApp {...getConfig('reactTestApp')}/>
+  },
+  {
+    path: "demo/*",
+    name: i18n.t("base.menu.demo"),
+    icon: <HomeOutlined />,
+    element: <MicroApp {...getConfig('demo')}/>
   },
 ]
 
