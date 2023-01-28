@@ -2,6 +2,7 @@
   "base": {
     "HEADER": "BASE",
     "menu": {
+      "demo": "Demo",
       "homePage": "HomePage",
       "one": "Menu One",
       "two": "Menu Two",
@@ -15,7 +16,8 @@
         "E": "Module E",
         "F": "Module F",
         "G": "Module G"
-      }
+      },
+      "reactTestApp": "react18 App"
     }
   }
 }
