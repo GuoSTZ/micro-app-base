@@ -12,6 +12,7 @@ export default function MicroApp(props: MicroAppProps) {
   return (
     <React.Fragment>
       <micro-app 
+        data={{}}
         name={name} 
         url={url}
         baseroute={NAME_SPACE}

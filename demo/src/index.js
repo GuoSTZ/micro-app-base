@@ -16,7 +16,12 @@ const App= () => {
 }
 
 window.unmount = () => {
+  console.log(`${NAME_SPACE}子应用已经卸载`)
   root.unmount()
+}
+
+window.onmount = (data) => {
+  console.log(`${NAME_SPACE}子应用已经渲染`, data)
 }
 
 root.render(
