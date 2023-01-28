@@ -23,7 +23,7 @@ const addHtmlWebpackPlugin = ({ env, namespace }) => {
     options = {
       ENV: env,
       cssString: '',
-      // publicPath: '/',
+      publicPath: '/',
     }
   }
   return new htmlWebpackPlugin({
