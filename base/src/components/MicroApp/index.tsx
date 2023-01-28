@@ -11,7 +11,11 @@ export default function MicroApp(props: MicroAppProps) {
   const { name, url } = props;
   return (
     <React.Fragment>
-      <micro-app name={name} url={url}></micro-app>
+      <micro-app 
+        name={name} 
+        url={url}
+        baseroute={NAME_SPACE}
+      />
       <Outlet />
     </React.Fragment>
   )

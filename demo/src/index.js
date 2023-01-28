@@ -1,6 +1,5 @@
 import './public-path';
 import React from 'react';
-import { unmountComponentAtNode } from 'react-dom';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, useRoutes } from 'react-router-dom';
 import routes from './router';
@@ -17,12 +16,12 @@ const App= () => {
 }
 
 window.unmount = () => {
-  unmountComponentAtNode(document.getElementById('root'))
+  root.unmount()
 }
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={window.__MICRO_APP_BASE_ROUTE__ ?? '/demo'}>
       <App />
     </BrowserRouter>
   </React.StrictMode>
