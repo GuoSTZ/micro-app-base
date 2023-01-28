@@ -78,10 +78,6 @@ const getWebpackProdConfig = options => {
         minimize: true,
         debug: false,
       }),
-      new webpack.LoaderOptionsPlugin({
-        minimize: true,
-        debug: false
-      }),
       new MiniCssExtractPlugin({
         filename: 'css/style.[contenthash:8].css',
       }),

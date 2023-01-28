@@ -1,5 +1,12 @@
 const path = require('path')
-const htmlWebpackPlugin = require('html-webpack-plugin')
+const { theme } = require('antd/lib');
+const { convertLegacyToken } = require('@ant-design/compatible/lib');
+
+const { defaultAlgorithm, defaultSeed } = theme;
+
+const mapToken = defaultAlgorithm(defaultSeed);
+const v4Token = convertLegacyToken(mapToken);
+
 
 const { merge } = require('webpack-merge')
 const {
@@ -75,6 +82,7 @@ module.exports = merge(common, {
             options: {
               lessOptions: {
                 javascriptEnabled: true,
+                modifyVars: v4Token,
               },
             },
           },
