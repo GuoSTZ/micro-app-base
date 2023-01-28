@@ -6,4 +6,4 @@ const defaultConfig = {
 }
 
 export const fetchDemo = (params: object = {}, config: AxiosRequestConfig = defaultConfig) => 
-  FetchUtils.fetchGet(`${API_PREFIX}/demo`, params, config);
+  FetchUtils.fetchGet(`${API_PREFIX}/demo/get`, params, config);

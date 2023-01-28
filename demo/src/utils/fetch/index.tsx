@@ -6,11 +6,11 @@ const instance = axios.create({
 })
 
 export const fetchPost = async (url: string, params: object, config: AxiosRequestConfig<object>) => {
-  return await instance.post(url, params, config).then(res => res).catch(error => error);
+  return await instance.post(url, params, config).then(res => res.data).catch(error => error);
 }
 
 export const fetchGet = async (url: string, params: object, config: AxiosRequestConfig<object>) => {
-  return await instance.get(url, Object.assign({}, config, {params})).then(res => res).catch(error => error);
+  return await instance.get(url, Object.assign({}, config, {params})).then(res => res.data).catch(error => error);
 }
 
 export const fetchBatch = (funcs: (Function | Promise<Function>)[], callback: (...args) => unknown) => {
