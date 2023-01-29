@@ -6,7 +6,9 @@
       "new": "新增",
       "delete": "删除",
       "edit": "编辑",
-      "detail": "详情"
+      "detail": "详情",
+      "cancel": "返回",
+      "ok": "确定"
     }
   }
 }

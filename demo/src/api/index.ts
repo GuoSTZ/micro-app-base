@@ -5,5 +5,17 @@ const defaultConfig = {
   headers: {} as AxiosRequestHeaders
 }
 
-export const fetchDemo = (params: object = {}, config: AxiosRequestConfig = defaultConfig) => 
+export const fetchPage = (params: object = {}, config: AxiosRequestConfig = defaultConfig) => 
   FetchUtils.fetchGet(`${API_PREFIX}/demo/get`, params, config);
+
+export const fetchFormSchema = (params: object = {}, config: AxiosRequestConfig = defaultConfig) => 
+  FetchUtils.fetchGet(`${API_PREFIX}/demo/getFormSchema`, params, config);
+
+export const fetchDetailSchema = (params: object = {}, config: AxiosRequestConfig = defaultConfig) => 
+  FetchUtils.fetchGet(`${API_PREFIX}/demo/getDetailSchema`, params, config);
+
+export const fetchItem = (params: object = {}, config: AxiosRequestConfig = defaultConfig) => 
+  FetchUtils.fetchGet(`${API_PREFIX}/demo/getItem`, params, config);
+
+export const fetchDelete = (params: object = {}, config: AxiosRequestConfig = defaultConfig) => 
+  FetchUtils.fetchPost(`${API_PREFIX}/demo/delete`, params, config);

@@ -5,7 +5,7 @@ import styles from './index.module.less';
 export interface PanelProps {
   className?: string;
   title?: React.ReactNode;
-  handleCancel: React.MouseEventHandler<HTMLAnchorElement> & React.MouseEventHandler<HTMLButtonElement>;
+  handleCancel?: React.MouseEventHandler<HTMLAnchorElement> & React.MouseEventHandler<HTMLButtonElement>;
   footer?: React.ReactNode;
 }
 

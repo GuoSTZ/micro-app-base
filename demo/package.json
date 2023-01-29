@@ -60,7 +60,11 @@
   },
   "dependencies": {
     "@ant-design/compatible": "^5.1.1",
-    "antd": "5.1.5",
+    "@formily/antd": "next",
+    "@formily/core": "2.2.17",
+    "@formily/react": "2.2.17",
+    "@formily/reactive": "2.2.17",
+    "antd": "5.1.6",
     "axios": "^1.2.2",
     "dayjs": "1.11.6",
     "echarts": "5.4.0",
@@ -71,7 +75,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-i18next": "^12.0.0",
-    "react-router-dom": "^6.3.0"
+    "react-router-dom": "^6.3.0",
+    "react-sticky-box": "^1.0.2"
   },
   "browserslist": {
     "development": [

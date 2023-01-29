@@ -16,7 +16,7 @@ export default () => {
   const [selectedRows, setSelectedRows] = useState([]);
 
   useEffect(() => {
-    actions.fetchDemo({}, (data: any) => {
+    actions.fetchPage({}, (data: any) => {
       setTableData(data);
     })
   }, [])
@@ -45,9 +45,16 @@ export default () => {
         render: (text: unknown, record: any) => {
           return (
             <TableOperation>
-              <Button onClick={() => navigate(`edit/${record.key}`)}>{locale("common.operations.edit")}</Button>
-              <Button onClick={() => navigate(`detail/${record.key}`)}>{locale("common.operations.detail")}</Button>
-              <Button>{locale("common.operations.delete")}</Button>
+              <Button onClick={() => navigate(`edit/${record.id}`)}>{locale("common.operations.edit")}</Button>
+              <Button onClick={() => navigate(`detail/${record.id}`)}>{locale("common.operations.detail")}</Button>
+              <Button 
+                onClick={() => actions.fetchDelete({id: record.id}, () => {
+                  actions.fetchPage(tableData.page, (data: any) => {
+                    setTableData(data);
+                  })
+                })}>
+                {locale("common.operations.delete")}
+              </Button>
             </TableOperation>
           )
         }
@@ -60,7 +67,8 @@ export default () => {
       <Toolbar>
         <Button type="primary" onClick={() => navigate('add')}>{locale("common.operations.new")}</Button>
       </Toolbar>
-      <DataTable 
+      <DataTable
+        rowKey={'id'}
         dataSource={tableData.items}
         columns={columns}
         page={tableData.page}

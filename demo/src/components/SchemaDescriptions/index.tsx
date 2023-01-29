@@ -28,8 +28,8 @@ export interface SchemaDescriptionsProps extends DescriptionsProps {
 }
 
 const SchemaDescriptions: React.FC<SchemaDescriptionsProps> = props => {
-  const { schema, components, data = {}, ...otherProps } = props
-  const { descriptions, columns } = schema
+  const { schema = {}, components, data = {}, ...otherProps } = props
+  const { descriptions, columns = {properties: []} } = schema
   // 内置表达式作用域
   const $descriptions = props
 
