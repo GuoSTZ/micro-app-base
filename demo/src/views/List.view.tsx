@@ -2,25 +2,20 @@ import { Button, Table } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as actions from '@/action';
-import './index.module.less';
 import Toolbar from '@/components/Toolbar';
+import DataTable from '@/components/DataTable';
+import useTableData from '@/hooks/useTableData';
+import './index.module.less';
 
 export default () => {
   const navigate = useNavigate();
-  const [tableData, setTableData] = useState([]);
-  const [tablePage, setTablePage] = useState({
-    current: 1,
-    pageSize: 10,
-    total: 0
-  });
+  const [tableData, setTableData] = useTableData();
+  const [selectedRowKeys, setSelectedRowKeys] = useState([]);
+  const [selectedRows, setSelectedRows] = useState([]);
+
   useEffect(() => {
     actions.fetchDemo({}, (data: any) => {
-      setTableData(data.items);
-      setTablePage({
-        current: data.current,
-        pageSize: data.pageSize,
-        total: data.total
-      })
+      setTableData(data);
     })
   }, [])
 
@@ -51,9 +46,15 @@ export default () => {
         <Button onClick={() => navigate('edit/1')}>编辑页</Button>
         <Button onClick={() => navigate('detail/1')}>详情页</Button>
       </Toolbar>
-      <Table 
-        dataSource={tableData}
+      <DataTable 
+        dataSource={tableData.items}
         columns={columns}
+        page={tableData.page}
+        handler={{
+          setSelectedRowKeys, 
+          setSelectedRows
+        }}
+        rowSelection={null}
       />
     </div>
   )
