@@ -32,4 +32,11 @@ i18n
 	});
 
 export default i18n;
-export const locale = i18n.t;
+
+const changeLanguage = (value: keyof typeof resources) => {
+	i18n.changeLanguage(value);
+}
+
+const locale = i18n.t;
+
+export {locale, changeLanguage};

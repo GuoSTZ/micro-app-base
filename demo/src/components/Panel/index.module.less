@@ -1,3 +1,5 @@
+@wrapPadding: 16px;
+
 .panel {
   position: relative;
   display: flex;
@@ -20,6 +22,9 @@
     bottom: 0;
     left: 0;
     height: 54px;
+    margin-left: -@wrapPadding;
+    margin-bottom: -@wrapPadding;
+    width: calc(100% + 2 * @wrapPadding);
     padding: 11px 0;
     background: #ffffff;
     border-radius: 0px 0px 2px 2px;

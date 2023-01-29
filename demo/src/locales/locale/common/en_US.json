@@ -1,0 +1,12 @@
+{
+  "common": {
+    "operations": {
+      "operation": "Operation",
+      "add": "Add",
+      "new": "New",
+      "delete": "Delete",
+      "edit": "Edit",
+      "detail": "Detail"
+    }
+  }
+}

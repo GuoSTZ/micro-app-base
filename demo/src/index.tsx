@@ -1,4 +1,6 @@
 import './public-path';
+import { ConfigProvider } from 'antd';
+import zhCN from 'antd/locale/zh_CN'
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, useRoutes } from 'react-router-dom';
@@ -29,7 +31,9 @@ const mergedBaseName = window.__MICRO_APP_BASE_ROUTE__ ? `${window.__MICRO_APP_B
 root.render(
   <React.StrictMode>
     <BrowserRouter basename={mergedBaseName}>
-      <App />
+      <ConfigProvider locale={zhCN}>
+        <App />
+      </ConfigProvider>
     </BrowserRouter>
   </React.StrictMode>
 )

@@ -39,7 +39,6 @@ const common = {
   resolve: {
     alias: {
       '@': resolveApp('./src'),
-      handlebars: 'handlebars/dist/handlebars.js',
     },
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
     mainFiles: ['index.js', 'index.jsx', 'index.ts', 'index.tsx'],

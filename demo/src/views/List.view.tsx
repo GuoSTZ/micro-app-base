@@ -1,10 +1,12 @@
-import { Button, Table } from 'antd';
+import { Button } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as actions from '@/action';
 import Toolbar from '@/components/Toolbar';
 import DataTable from '@/components/DataTable';
 import useTableData from '@/hooks/useTableData';
+import { locale } from '@/locales';
+import TableOperation from '@/components/TableOperation';
 import './index.module.less';
 
 export default () => {
@@ -22,19 +24,33 @@ export default () => {
   const columns = React.useMemo(() => {
     return [
       {
-        title: '姓名',
+        title: locale("demo.list.table.name"),
         dataIndex: 'name',
         key: 'name',
       },
       {
-        title: '年龄',
-        dataIndex: 'age',
+        title: locale("demo.list.table.age"),
+        dataIndex: 'age', 
         key: 'age',
       },
       {
-        title: '住址',
+        title: locale("demo.list.table.address"),
         dataIndex: 'address',
         key: 'address',
+      },
+      {
+        title: locale("common.operations.operation"),
+        key: 'operation',
+        width: 200,
+        render: (text: unknown, record: any) => {
+          return (
+            <TableOperation>
+              <Button onClick={() => navigate(`edit/${record.key}`)}>{locale("common.operations.edit")}</Button>
+              <Button onClick={() => navigate(`detail/${record.key}`)}>{locale("common.operations.detail")}</Button>
+              <Button>{locale("common.operations.delete")}</Button>
+            </TableOperation>
+          )
+        }
       },
     ];
   }, [])
@@ -42,9 +58,7 @@ export default () => {
   return (
     <div>
       <Toolbar>
-        <Button onClick={() => navigate('add')}>新增页</Button>
-        <Button onClick={() => navigate('edit/1')}>编辑页</Button>
-        <Button onClick={() => navigate('detail/1')}>详情页</Button>
+        <Button type="primary" onClick={() => navigate('add')}>{locale("common.operations.new")}</Button>
       </Toolbar>
       <DataTable 
         dataSource={tableData.items}

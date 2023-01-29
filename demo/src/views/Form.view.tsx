@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import * as actions from '@/action';
 import Panel from '@/components/Panel';
+import { locale } from '@/locales';
 import './index.module.less';
 
 export default () => {
@@ -13,8 +14,9 @@ export default () => {
   }, [])
 
   return (
-    <Panel handleCancel={() => navigate(-1)}>
-      {params.id ? '编辑' : '新增'}
+    <Panel 
+      title={params.id ? locale("common.operations.edit") : locale("common.operations.new")}
+      handleCancel={() => navigate(-1)}>
       <Form />
     </Panel>
   )
