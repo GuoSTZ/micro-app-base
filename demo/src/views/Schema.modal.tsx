@@ -86,7 +86,7 @@ export default () => {
               message: '请输入Schema Key',
             },
           ]}>
-          <Input placeholder='请输入' disabled/>
+          <Input placeholder='请输入' disabled={!!params.schemaId}/>
         </Form.Item>
 
         <Form.Item
