@@ -19,11 +19,15 @@ export interface DataTableProps extends TableProps<object> {
   /** 分页参数 */
   page?: IPage
   /** 传入行数据选中处理函数 */
-  handler: { setSelectedRowKeys: Function, setSelectedRows: Function };
+  handler?: { setSelectedRowKeys: Function, setSelectedRows: Function };
 }
 
 const DataTable: React.FC<DataTableProps> = props => {
-  const { page, components, handler, rowSelection, ...otherProps } = props
+  const defaultHandler = {
+    setSelectedRowKeys: () => {},
+    setSelectedRows: () => {},
+  }
+  const { page, components, handler = defaultHandler, rowSelection, ...otherProps } = props
   const { setSelectedRowKeys, setSelectedRows } = handler;
 
   const mergedRowSelection: TableRowSelection<object> = rowSelection !== null ? Object.assign({}, rowSelection, {

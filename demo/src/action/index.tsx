@@ -10,17 +10,8 @@ export const fetchPage = async (params: object = {}, callback: Function) => {
   }
 }
 
-export const fetchFormSchema = async (params: object = {}, callback: Function) => {
-  const data = await Api.fetchFormSchema(params);
-  if(data.code === 0) {
-    callback?.(data.data)
-  } else {
-    message.error(data?.message)
-  }
-}
-
-export const fetchDetailSchema = async (params: object = {}, callback: Function) => {
-  const data = await Api.fetchDetailSchema(params);
+export const fetchSchema = async (params: object = {}, callback: Function) => {
+  const data = await Api.fetchSchema(params);
   if(data.code === 0) {
     callback?.(data.data)
   } else {
@@ -59,6 +50,34 @@ export const fetchSave = async (params: object = {}, callback: Function) => {
 
 export const fetchUpdate = async (params: object = {}, callback: Function) => {
   const data = await Api.fetchUpdate(params);
+  if(data.code === 0) {
+    callback?.()
+    message.success("操作成功")
+  } else {
+    message.error(data?.message)
+  }
+}
+
+export const fetchSchemaList = async (params: object = {}, callback: Function) => {
+  const data = await Api.fetchSchemaList(params);
+  if(data.code === 0) {
+    callback?.(data.data)
+  } else {
+    message.error(data?.message)
+  }
+}
+
+export const fetchSchemaItem = async (params: object = {}, callback: Function) => {
+  const data = await Api.fetchSchemaItem(params);
+  if(data.code === 0) {
+    callback?.(data.data)
+  } else {
+    message.error(data?.message)
+  }
+}
+
+export const fetchSaveSchema = async (params: object = {}, callback: Function) => {
+  const data = await Api.fetchSaveSchema(params);
   if(data.code === 0) {
     callback?.()
     message.success("操作成功")

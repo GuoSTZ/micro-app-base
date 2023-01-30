@@ -16,12 +16,18 @@ export default () => {
   const [formSchmea, setFormSchema] = useState({});
 
   useEffect(() => {
-    actions.fetchFormSchema({ id: params.id }, data => {
-      setFormSchema(data)
-    })
-    !!params.id && actions.fetchItem({ id: params.id }, data => {
-      form?.setInitialValues(data)
-    })
+    if(!!params.id) {
+      actions.fetchSchema({ schemaKey: 'formEdit' }, data => {
+        setFormSchema(data)
+      })
+      actions.fetchItem({ id: params.id }, data => {
+        form?.setInitialValues(data)
+      })
+    } else {
+      actions.fetchSchema({ schemaKey: 'formAdd' }, data => {
+        setFormSchema(data)
+      })
+    }
   }, [])
 
   const handleSubmit = () => {

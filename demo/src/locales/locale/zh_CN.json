@@ -5,6 +5,17 @@
         "name": "姓名",
         "age": "年龄",
         "address": "地址"
+      },
+      "schema": "Schema配置"
+    },
+    "schema": {
+      "table": {
+        "key": "Schema Key",
+        "name": "Schema名称",
+        "module": "归属页面"
+      },
+      "modal": {
+        "title": "新增Schema"
       }
     }
   }

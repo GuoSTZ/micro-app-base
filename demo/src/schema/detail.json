@@ -7,10 +7,20 @@
   "columns": {
     "type": "object",
     "properties": {
-      "test": {
+      "name": {
         "type": "string",
-        "title": "测试",
-        "dataIndex": "test"
+        "title": "姓名",
+        "dataIndex": "name"
+      },
+      "age": {
+        "type": "string",
+        "title": "年龄",
+        "dataIndex": "age"
+      },
+      "address": {
+        "type": "string",
+        "title": "地址",
+        "dataIndex": "address"
       }
     }
   }

@@ -1,9 +1,11 @@
 import { Button } from 'antd';
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import dayjs from 'dayjs';
+import React, { useEffect } from 'react';
+import { useNavigate, Outlet } from 'react-router-dom';
 import * as actions from '@/action';
 import Toolbar from '@/components/Toolbar';
 import DataTable from '@/components/DataTable';
+import Panel from '@/components/Panel';
 import useTableData from '@/hooks/useTableData';
 import { locale } from '@/locales';
 import TableOperation from '@/components/TableOperation';
@@ -12,11 +14,9 @@ import './index.module.less';
 export default () => {
   const navigate = useNavigate();
   const [tableData, setTableData] = useTableData();
-  const [selectedRowKeys, setSelectedRowKeys] = useState([]);
-  const [selectedRows, setSelectedRows] = useState([]);
 
   useEffect(() => {
-    actions.fetchPage({}, (data: any) => {
+    actions.fetchSchemaList({}, (data: any) => {
       setTableData(data);
     })
   }, [])
@@ -24,20 +24,26 @@ export default () => {
   const columns = React.useMemo(() => {
     return [
       {
-        title: locale("demo.list.table.name"),
-        dataIndex: 'name',
-        key: 'name',
+        title: locale("demo.schema.table.key"),
+        dataIndex: 'schemaKey',
+        key: 'schemaKey',
       },
       {
-        title: locale("demo.list.table.age"),
-        dataIndex: 'age', 
-        key: 'age',
+        title: locale("demo.schema.table.name"),
+        dataIndex: 'schemaName', 
+        key: 'schemaName',
       },
       {
-        title: locale("demo.list.table.address"),
-        dataIndex: 'address',
-        key: 'address',
+        title: locale("common.updateTime"),
+        dataIndex: 'updateTime', 
+        key: 'updateTime',
+        render: (text: string) => dayjs(text).format("YYYY-MM-DD HH:mm:ss")
       },
+      // {
+      //   title: locale("demo.schema.table.module"),
+      //   dataIndex: 'module',
+      //   key: 'module',
+      // },
       {
         title: locale("common.operations.operation"),
         key: 'operation',
@@ -46,15 +52,7 @@ export default () => {
           return (
             <TableOperation>
               <Button onClick={() => navigate(`edit/${record.id}`)}>{locale("common.operations.edit")}</Button>
-              <Button onClick={() => navigate(`detail/${record.id}`)}>{locale("common.operations.detail")}</Button>
-              <Button 
-                onClick={() => actions.fetchDelete({ids: [record.id]}, () => {
-                  actions.fetchPage(tableData.page, (data: any) => {
-                    setTableData(data);
-                  })
-                })}>
-                {locale("common.operations.delete")}
-              </Button>
+              <Button>{locale("common.operations.download")}</Button>
             </TableOperation>
           )
         }
@@ -63,22 +61,18 @@ export default () => {
   }, [])
 
   return (
-    <div>
+    <Panel handleCancel={() => navigate(-1)}>
       <Toolbar>
         <Button type="primary" onClick={() => navigate('add')}>{locale("common.operations.new")}</Button>
-        <Button type="primary" onClick={() => navigate('schema')}>{locale("demo.list.schema")}</Button>
       </Toolbar>
       <DataTable
         rowKey={'id'}
         dataSource={tableData.items}
         columns={columns}
         page={tableData.page}
-        handler={{
-          setSelectedRowKeys, 
-          setSelectedRows
-        }}
         rowSelection={null}
       />
-    </div>
+      <Outlet />
+    </Panel>
   )
 }

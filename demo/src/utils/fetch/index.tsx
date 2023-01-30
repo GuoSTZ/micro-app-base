@@ -16,3 +16,7 @@ export const fetchGet = async (url: string, params: object, config: AxiosRequest
 export const fetchBatch = (funcs: (Function | Promise<Function>)[], callback: (...args) => unknown) => {
   return axios.all(funcs).then(axios.spread(callback)).catch(error => error);
 }
+
+export const fetchUpload = async (url: string, params: object, config: AxiosRequestConfig<object>) => {
+  return await instance.post(url, params, {...config, headers: {...config.headers, 'Content-Type': 'multipart/form-data'}}).then(res => res.data).catch(error => error);
+}

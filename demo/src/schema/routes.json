@@ -14,5 +14,19 @@
   {
     "path": "detail/:id",
     "element": "DetailView"
+  },
+  {
+    "path": "schema/*",
+    "element": "SchemaView",
+    "children": [
+      {
+        "path": "add",
+        "element": "SchemaModal"
+      },
+      {
+        "path": "edit/:schemaId",
+        "element": "SchemaModal"
+      }
+    ]
   }
 ]

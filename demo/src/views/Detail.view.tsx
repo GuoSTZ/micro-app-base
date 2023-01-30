@@ -11,7 +11,7 @@ export default () => {
   const [detailSchema, setDetailSchema] = useState({});
   const [dataSource, setDataSource] = useState({});
   useEffect(() => {
-    actions.fetchDetailSchema({id: params.id}, data => {
+    actions.fetchSchema({schemaKey: 'detail'}, data => {
       setDetailSchema(data)
     })
     actions.fetchItem({id: params.id}, data => {
