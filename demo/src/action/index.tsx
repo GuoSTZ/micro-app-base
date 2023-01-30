@@ -85,3 +85,13 @@ export const fetchSaveSchema = async (params: object = {}, callback: Function) =
     message.error(data?.message)
   }
 }
+
+export const fetchUpdateSchema = async (params: object = {}, callback: Function) => {
+  const data = await Api.fetchUpdateSchema(params);
+  if(data.code === 0) {
+    callback?.()
+    message.success("操作成功")
+  } else {
+    message.error(data?.message)
+  }
+}

@@ -15,7 +15,10 @@
         "module": "归属页面"
       },
       "modal": {
-        "title": "新增Schema"
+        "title": {
+          "add": "新增Schema",
+          "edit": "编辑Schema"
+        }
       }
     }
   }

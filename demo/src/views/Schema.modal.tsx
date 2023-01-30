@@ -33,10 +33,17 @@ export default () => {
             formData.append(i, values[i] as RcFile);
           }
         }
-        actions.fetchSaveSchema(formData, () => {
-          setUploading(false);
-          navigate(-1)
-        })
+        if(!!params?.schemaId) {
+          actions.fetchUpdateSchema(formData, () => {
+            setUploading(false);
+            navigate(-1)
+          })
+        } else {
+          actions.fetchSaveSchema(formData, () => {
+            setUploading(false);
+            navigate(-1)
+          })
+        }
         setUploading(false);
       })
       .catch((info) => {
@@ -59,7 +66,7 @@ export default () => {
   return (
     <Modal
       open
-      title={locale("demo.schema.modal.title")}
+      title={params.schemaId ? locale("demo.schema.modal.title.edit") : locale("demo.schema.modal.title.add")}
       onCancel={() => navigate(-1)}
       onOk={handleUpload}>
       <Form
@@ -79,7 +86,7 @@ export default () => {
               message: '请输入Schema Key',
             },
           ]}>
-          <Input placeholder='请输入' />
+          <Input placeholder='请输入' disabled/>
         </Form.Item>
 
         <Form.Item

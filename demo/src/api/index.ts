@@ -31,3 +31,6 @@ export const fetchSchemaItem = (params: object = {}, config: AxiosRequestConfig 
 
 export const fetchSaveSchema = (params: object = {}, config: AxiosRequestConfig = defaultConfig) => 
   FetchUtils.fetchUpload(`${API_PREFIX}/demo/schema/save`, params, config);
+
+export const fetchUpdateSchema = (params: object = {}, config: AxiosRequestConfig = defaultConfig) => 
+  FetchUtils.fetchUpload(`${API_PREFIX}/demo/schema/update`, params, config);
