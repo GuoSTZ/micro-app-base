@@ -6,7 +6,15 @@
       "new": "New",
       "delete": "Delete",
       "edit": "Edit",
-      "detail": "Detail"
-    }
+      "detail": "Detail",
+      "cancel": "Cancel",
+      "back": "Back",
+      "ok": "Ok",
+      "download": "Download"
+    },
+    "createTime": "CreateTime",
+    "updateTime": "UpdateTime",
+    "beginTime": "BeginTime",
+    "endTime": "EndTime"
   }
 }

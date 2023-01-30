@@ -5,6 +5,17 @@
         "name": "Name",
         "age": "Age",
         "address": "Address"
+      },
+      "schema": "Schema"
+    },
+    "schema": {
+      "table": {
+        "key": "Schema Key",
+        "name": "Schema Name",
+        "module": "Modele"
+      },
+      "modal": {
+        "title": "New Schema"
       }
     }
   }

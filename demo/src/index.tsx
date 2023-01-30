@@ -1,9 +1,10 @@
 import './public-path';
 import { ConfigProvider } from 'antd';
 import zhCN from 'antd/locale/zh_CN'
-import React from 'react';
+import React, { useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, useRoutes } from 'react-router-dom';
+import { changeLanguage } from '@/locales';
 import routes from './router';
 import './index.css';
 
@@ -14,6 +15,16 @@ global.API_PREFIX = 'http://localhost:3000';
 
 const App = () => {
   const View = useRoutes(routes)
+
+  useEffect(() => {
+    window.microApp.addDataListener(data => {
+      changeLanguage(data.lng)
+    }, true)
+    return () => {
+      window.microApp.clearDataListener()
+    }
+  }, [])
+
   return View
 }
 

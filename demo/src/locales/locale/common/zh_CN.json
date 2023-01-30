@@ -7,13 +7,14 @@
       "delete": "删除",
       "edit": "编辑",
       "detail": "详情",
-      "cancel": "返回",
+      "cancel": "取消",
+      "back": "返回",
       "ok": "确定",
       "download": "下载"
     },
     "createTime": "创建时间",
     "updateTime": "最后更新时间",
-    "startTime": "开始时间",
+    "beginTime": "开始时间",
     "endTime": "结束时间"
   }
 }
