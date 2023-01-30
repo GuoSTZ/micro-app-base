@@ -48,7 +48,7 @@ export default () => {
               <Button onClick={() => navigate(`edit/${record.id}`)}>{locale("common.operations.edit")}</Button>
               <Button onClick={() => navigate(`detail/${record.id}`)}>{locale("common.operations.detail")}</Button>
               <Button 
-                onClick={() => actions.fetchDelete({id: record.id}, () => {
+                onClick={() => actions.fetchDelete({ids: [record.id]}, () => {
                   actions.fetchPage(tableData.page, (data: any) => {
                     setTableData(data);
                   })

@@ -19,3 +19,9 @@ export const fetchItem = (params: object = {}, config: AxiosRequestConfig = defa
 
 export const fetchDelete = (params: object = {}, config: AxiosRequestConfig = defaultConfig) => 
   FetchUtils.fetchPost(`${API_PREFIX}/demo/delete`, params, config);
+
+export const fetchSave = (params: object = {}, config: AxiosRequestConfig = defaultConfig) => 
+  FetchUtils.fetchPost(`${API_PREFIX}/demo/save`, params, config);
+
+export const fetchUpdate = (params: object = {}, config: AxiosRequestConfig = defaultConfig) => 
+  FetchUtils.fetchPost(`${API_PREFIX}/demo/update`, params, config);

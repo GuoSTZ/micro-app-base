@@ -46,3 +46,23 @@ export const fetchDelete = async (params: object = {}, callback: Function) => {
     message.error(data?.message)
   }
 }
+
+export const fetchSave = async (params: object = {}, callback: Function) => {
+  const data = await Api.fetchSave(params);
+  if(data.code === 0) {
+    callback?.()
+    message.success("操作成功")
+  } else {
+    message.error(data?.message)
+  }
+}
+
+export const fetchUpdate = async (params: object = {}, callback: Function) => {
+  const data = await Api.fetchUpdate(params);
+  if(data.code === 0) {
+    callback?.()
+    message.success("操作成功")
+  } else {
+    message.error(data?.message)
+  }
+}

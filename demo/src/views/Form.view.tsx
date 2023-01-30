@@ -16,10 +16,10 @@ export default () => {
   const [formSchmea, setFormSchema] = useState({});
 
   useEffect(() => {
-    actions.fetchFormSchema({id: params.id}, data => {
+    actions.fetchFormSchema({ id: params.id }, data => {
       setFormSchema(data)
     })
-    !!params.id && actions.fetchItem({id: params.id}, data => {
+    !!params.id && actions.fetchItem({ id: params.id }, data => {
       form?.setInitialValues(data)
     })
   }, [])
@@ -27,15 +27,19 @@ export default () => {
   const handleSubmit = () => {
     form?.submit()
       .then(values => {
-        console.log(values)
+        values?.id ? actions.fetchUpdate(values, goBack) : actions.fetchSave(values, goBack)
       })
       .catch(error => {
         console.log(error)
       })
   }
 
+  const goBack = () => {
+    navigate(-1)
+  }
+
   return (
-    <Panel 
+    <Panel
       title={params.id ? locale("common.operations.edit") : locale("common.operations.new")}
       footer={
         <Toolbar>
@@ -43,7 +47,7 @@ export default () => {
           <Button type="primary" onClick={handleSubmit} key={2}>{locale("common.operations.ok")}</Button>
         </Toolbar>
       }>
-      <FormRender schema={formSchmea} getForm={baseForm => form = baseForm}/>
+      <FormRender schema={formSchmea} getForm={baseForm => form = baseForm} />
     </Panel>
   )
 }
