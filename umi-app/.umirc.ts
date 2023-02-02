@@ -1,6 +1,7 @@
-import { defineConfig } from 'dumi';
+import { defineConfig, IConfig } from 'dumi';
 import { resolve } from "path";
 import packageJson from './package.json';
+import routes from './src/routes'
 
 const PORT = 8092;
 const NAME_SPACE = packageJson.name;
@@ -76,7 +77,7 @@ export default defineConfig({
     exclude: undefined
   },
   // 路由
-  // routes: [],
+  routes: routes,
   // 热更新
   fastRefresh: {}
-});
+} as IConfig);

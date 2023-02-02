@@ -2,7 +2,7 @@
   "name": "umi-app",
   "version": "1.0.0",
   "scripts": {
-    "start": "dumi dev",
+    "start": "SOCKET_SERVER=http://localhost:8092 dumi dev",
     "docs:build": "dumi build",
     "docs:deploy": "gh-pages -d docs-dist",
     "build": "father build",

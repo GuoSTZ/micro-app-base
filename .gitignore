@@ -95,3 +95,5 @@ dist/
 
 # yarn
 yarn.lock
+
+.umi

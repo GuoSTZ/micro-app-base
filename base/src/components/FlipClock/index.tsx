@@ -24,6 +24,9 @@ const FlipClock = () => {
     ]
     init()
     run()
+    return () => {
+      timer && clearInterval(timer)
+    }
   }, [])
 
   const init = () => {
