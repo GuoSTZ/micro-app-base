@@ -1,4 +1,5 @@
 import { Button } from 'antd';
+import { ColumnsType } from 'antd/es/table';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as actions from '@/action';
@@ -21,46 +22,44 @@ export default () => {
     })
   }, [])
 
-  const columns = React.useMemo(() => {
-    return [
-      {
-        title: locale("demo.list.table.name"),
-        dataIndex: 'name',
-        key: 'name',
-      },
-      {
-        title: locale("demo.list.table.age"),
-        dataIndex: 'age', 
-        key: 'age',
-      },
-      {
-        title: locale("demo.list.table.address"),
-        dataIndex: 'address',
-        key: 'address',
-      },
-      {
-        title: locale("common.operations.operation"),
-        key: 'operation',
-        width: 200,
-        render: (text: unknown, record: any) => {
-          return (
-            <TableOperation>
-              <Button onClick={() => navigate(`edit/${record.id}`)}>{locale("common.operations.edit")}</Button>
-              <Button onClick={() => navigate(`detail/${record.id}`)}>{locale("common.operations.detail")}</Button>
-              <Button 
-                onClick={() => actions.fetchDelete({ids: [record.id]}, () => {
-                  actions.fetchPage(tableData.page, (data: any) => {
-                    setTableData(data);
-                  })
-                })}>
-                {locale("common.operations.delete")}
-              </Button>
-            </TableOperation>
-          )
-        }
-      },
-    ];
-  }, [])
+  const columns = [
+    {
+      title: locale("demo.list.table.name"),
+      dataIndex: 'name',
+      key: 'name',
+    },
+    {
+      title: locale("demo.list.table.age"),
+      dataIndex: 'age', 
+      key: 'age',
+    },
+    {
+      title: locale("demo.list.table.address"),
+      dataIndex: 'address',
+      key: 'address',
+    },
+    {
+      title: locale("common.operations.operation"),
+      key: 'operation',
+      width: 200,
+      render: (text: unknown, record) => {
+        return (
+          <TableOperation>
+            <Button onClick={() => navigate(`edit/${record.id}`)}>{locale("common.operations.edit")}</Button>
+            <Button onClick={() => navigate(`detail/${record.id}`)}>{locale("common.operations.detail")}</Button>
+            <Button 
+              onClick={() => actions.fetchDelete({ids: [record.id]}, () => {
+                actions.fetchPage(tableData.page, (data: any) => {
+                  setTableData(data);
+                })
+              })}>
+              {locale("common.operations.delete")}
+            </Button>
+          </TableOperation>
+        )
+      }
+    },
+  ];
 
   return (
     <div>

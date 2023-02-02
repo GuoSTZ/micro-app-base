@@ -66,6 +66,7 @@ export default () => {
   return (
     <Modal
       open
+      maskClosable={false}
       title={params.schemaId ? locale("demo.schema.modal.title.edit") : locale("demo.schema.modal.title.add")}
       onCancel={() => navigate(-1)}
       onOk={handleUpload}>
