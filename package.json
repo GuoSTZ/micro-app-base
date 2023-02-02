@@ -11,7 +11,8 @@
     "packages": [
       "base",
       "demo",
-      "react-test-app"
+      "react-test-app",
+      "umi-app"
     ]
   },
   "private": true,
