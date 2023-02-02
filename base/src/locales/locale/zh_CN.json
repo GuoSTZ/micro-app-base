@@ -17,7 +17,8 @@
         "F": "模块F",
         "G": "模块G"
       },
-      "reactTestApp": "react18应用"
+      "reactTestApp": "react18应用",
+      "umiApp": "umi应用"
     }
   }
 }

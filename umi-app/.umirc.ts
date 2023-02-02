@@ -1,9 +1,9 @@
 import { defineConfig } from 'dumi';
 import { resolve } from "path";
-import packageJson from './package.json'
+import packageJson from './package.json';
 
-const PORT = 8091;
-const NAME_SPACE = packageJson.name
+const PORT = 8092;
+const NAME_SPACE = packageJson.name;
 
 export default defineConfig({
   title: NAME_SPACE,
@@ -17,7 +17,10 @@ export default defineConfig({
   // more config: https://d.umijs.org/config
   headScripts: [],
   devServer: {
-    port: PORT
+    port: PORT,
+    headers: {
+      "Access-Control-Allow-Origin": "*"
+    }
   },
   extraBabelPlugins: [
     [

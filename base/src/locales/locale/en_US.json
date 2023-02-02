@@ -17,7 +17,8 @@
         "F": "Module F",
         "G": "Module G"
       },
-      "reactTestApp": "react18 App"
+      "reactTestApp": "react18 App",
+      "umiApp": "umi App"
     }
   }
 }
