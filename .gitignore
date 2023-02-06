@@ -94,6 +94,6 @@ build/
 dist/
 
 # yarn
-yarn.lock
+# yarn.lock
 
 .umi
