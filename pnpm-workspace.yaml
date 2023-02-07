@@ -4,5 +4,6 @@ packages:
   - 'demo'
   - 'react-test-app'
   - 'umi-app'
+  - 'vue-app'
   # 不包括在 test 文件夹下的 package
   # - '!**/test/**'

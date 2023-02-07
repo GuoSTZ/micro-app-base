@@ -18,6 +18,7 @@
         "G": "模块G"
       },
       "reactTestApp": "react18应用",
+      "vueApp": "vue3应用",
       "umiApp": "umi应用"
     }
   }

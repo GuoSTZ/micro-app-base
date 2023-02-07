@@ -7,5 +7,8 @@ export const config = {
   },
   'umiApp': {
     url: 'http://localhost:8092/'
+  },
+  'vueApp': {
+    url: 'http://localhost:8093/'
   }
 }

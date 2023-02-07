@@ -12,7 +12,8 @@
       "base",
       "demo",
       "react-test-app",
-      "umi-app"
+      "umi-app",
+      "vue-app"
     ]
   },
   "private": true,

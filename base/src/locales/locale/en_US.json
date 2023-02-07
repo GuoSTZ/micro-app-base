@@ -18,6 +18,7 @@
         "G": "Module G"
       },
       "reactTestApp": "react18 App",
+      "vueApp": "vue3 App",
       "umiApp": "umi App"
     }
   }

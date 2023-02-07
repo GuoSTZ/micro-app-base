@@ -96,6 +96,12 @@ const ModuleRoutes: RoutesType[] = [
     element: <MicroApp {...getConfig('reactTestApp')}/>
   },
   {
+    path: "vueApp/*",
+    name: i18n.t("base.menu.vueApp"),
+    icon: <HomeOutlined />,
+    element: <MicroApp {...getConfig('vueApp')}/>
+  },
+  {
     path: "demo/*",
     name: i18n.t("base.menu.demo"),
     icon: <HomeOutlined />,
