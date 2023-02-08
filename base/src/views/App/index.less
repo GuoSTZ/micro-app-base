@@ -1,1 +1,11 @@
-@import '~antd/dist/reset.css';
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+// h1样式覆盖，避免h1在 article｜aside｜nav｜section 等节点的影响下，字体大小改变
+h1 {
+  font-size: 2em;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+}
