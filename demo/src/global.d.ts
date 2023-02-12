@@ -1,10 +1,12 @@
 declare const API_PREFIX: string;
 declare const NAME_SPACE: string;
+declare const ENV: string;
 
 declare namespace NodeJS {
   interface Global {
     API_PREFIX: string;
     NAME_SPACE: string;
+    ENV: string;
   }
 }
 declare module '*.svg' {

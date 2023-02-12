@@ -13,7 +13,9 @@ microApp.start({
   'disable-patch-request': true, // 关闭对子应用请求的拦截
 })
 
-global.API_PREFIX = 'http://114.116.6.135:3000';
+if(ENV === 'developmet') {
+  global.API_PREFIX = 'http://114.116.6.135:3000';
+}
 
 root.render(
   <React.StrictMode>

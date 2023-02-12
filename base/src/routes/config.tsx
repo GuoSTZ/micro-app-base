@@ -1,14 +1,14 @@
 export const config = {
   'demo': {
-    url: 'http://localhost:8090/'
+    url: ENV === 'development' ? 'http://localhost:8090/' : `${window.location.origin}/demo/`
   },
   'reactTestApp': {
-    url: 'http://localhost:8091/'
+    url: ENV === 'development' ? 'http://localhost:8091/' : `${window.location.origin}/reactTestApp/`
   },
   'umiApp': {
-    url: 'http://localhost:8092/'
+    url: ENV === 'development' ? 'http://localhost:8092/' : `${window.location.origin}/umiApp/`
   },
   'vueApp': {
-    url: 'http://localhost:8093/'
+    url: ENV === 'development' ? 'http://localhost:8093/' : `${window.location.origin}/vueApp/`
   }
 }

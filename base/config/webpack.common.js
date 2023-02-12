@@ -18,6 +18,7 @@ const addHtmlWebpackPlugin = ({ env, namespace }) => {
     HOST_URL: '',
     cssString: '',
     jsString: '',
+    publicPath: '/',
   }
   if (env === 'development') {
     options = {

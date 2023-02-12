@@ -11,17 +11,25 @@ import './index.css';
 const container = document.getElementById('root');
 const root = createRoot(container);
 
-global.API_PREFIX = 'http://114.116.6.135:3000';
+global.API_PREFIX = '';
+if(ENV === 'developmet') {
+  global.API_PREFIX = 'http://114.116.6.135:3000';
+}
 
 const App = () => {
   const View = useRoutes(routes)
 
   useEffect(() => {
-    window.microApp.addDataListener(data => {
-      changeLanguage(data.lng)
-    }, true)
+    if(window.__MICRO_APP_ENVIRONMENT__) {
+      window.microApp.addDataListener(data => {
+        console.log(data, '======data')
+        changeLanguage(data.lng)
+      }, true)
+    }
     return () => {
-      window.microApp.clearDataListener()
+      if(window.__MICRO_APP_ENVIRONMENT__) {
+        window.microApp.clearDataListener()
+      }
     }
   }, [])
 
@@ -37,7 +45,7 @@ window.onmount = (data) => {
   console.log(`${window.__MICRO_APP_NAME__}子应用已经渲染`, data)
 }
 
-const mergedBaseName = window.__MICRO_APP_BASE_ROUTE__ ? `${window.__MICRO_APP_BASE_ROUTE__}/${window.__MICRO_APP_NAME__}` : window.__MICRO_APP_NAME__
+const mergedBaseName = window.__MICRO_APP_BASE_ROUTE__ ? `${window.__MICRO_APP_BASE_ROUTE__}/${window.__MICRO_APP_NAME__}` : ''
 
 root.render(
   <React.StrictMode>

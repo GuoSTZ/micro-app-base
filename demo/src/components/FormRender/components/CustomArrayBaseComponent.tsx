@@ -63,7 +63,7 @@ export const ArrayBaseAddition = (props: any) => {
           message.error(props.maxMessage)
           return
         }
-        const defaultValue = getDefaultValue(props.defaultValue, array.schema)
+        const defaultValue = getDefaultValue(props.defaultValue, array.schema as any)
         if (props.method === 'unshift') {
           array.field?.unshift?.(defaultValue)
           array.props?.onAdd?.(0)
