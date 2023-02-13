@@ -5,6 +5,7 @@ import { RoutesType } from '.';
 import { config } from './config';
 import i18n, { locale } from '@/locales';
 import Home from '@/views/Home';
+import Login from '@/views/Login';
 
 const getConfig = (name: string) => {
   return {
@@ -19,6 +20,12 @@ const ModuleRoutes: RoutesType[] = [
     name: i18n.t("base.menu.homePage"),
     icon: <HomeOutlined />,
     element: <Home />
+  },
+  {
+    path: "login/*",
+    name: "登录页（临时）",
+    icon: <HomeOutlined />,
+    element: <Login />
   },
   {
     path: "menuOne/*",
