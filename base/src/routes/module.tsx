@@ -107,12 +107,12 @@ const ModuleRoutes: RoutesType[] = [
     icon: <HomeOutlined />,
     element: <MicroApp {...getConfig('demo')}/>
   },
-  {
-    path: "umiApp/*",
-    name: i18n.t("base.menu.umiApp"),
-    icon: <HomeOutlined />,
-    element: <MicroApp {...getConfig('umiApp')}/>
-  },
+  // {
+  //   path: "umiApp/*",
+  //   name: i18n.t("base.menu.umiApp"),
+  //   icon: <HomeOutlined />,
+  //   element: <MicroApp {...getConfig('umiApp')}/>
+  // },
 ]
 
 export default ModuleRoutes;
