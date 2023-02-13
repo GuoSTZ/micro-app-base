@@ -12,7 +12,7 @@ const container = document.getElementById('root');
 const root = createRoot(container);
 
 global.API_PREFIX = '';
-if(ENV === 'developmet') {
+if(ENV === 'development') {
   global.API_PREFIX = 'http://114.116.6.135:3000';
 }
 
