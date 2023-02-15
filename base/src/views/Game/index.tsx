@@ -1,8 +1,8 @@
 import { Tabs, TabsProps, Empty, Watermark} from 'antd';
 import React from 'react';
 import Linking from './Linking';
-import linkingSvg from '@/views/Game/images/linking.svg';
-import developingSvg from '@/views/Game/images/developing.svg';
+import linkingSvg from '/public/images/Game/linking.svg';
+import developingSvg from '/public/images/Game/developing.svg';
 
 import './index.less';
 

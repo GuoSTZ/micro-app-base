@@ -1,23 +1,23 @@
 //  @ts-nocheck
 import React from 'react';
-import $ from './js/jquery';
-import avocado from './pic/avocado.png';
-import biscuits from './pic/biscuits.png';
-import cake from './pic/cake.png';
-import doughnut from './pic/doughnut.png';
-import eggYolkPuff from './pic/egg-yolk_puff.png';
-import mochi from './pic/mochi.png';
-import pizza from './pic/pizza.png';
-import pudding from './pic/pudding.png';
-import strawberry from './pic/strawberry.png';
-import white from './pic/white.png';
+import $ from '/public/js/jquery';
+import avocado from '/public/images/Game/Linking/pic/avocado.png';
+import biscuits from '/public/images/Game/Linking/pic/biscuits.png';
+import cake from '/public/images/Game/Linking/pic/cake.png';
+import doughnut from '/public/images/Game/Linking/pic/doughnut.png';
+import eggYolkPuff from '/public/images/Game/Linking/pic/egg-yolk_puff.png';
+import mochi from '/public/images/Game/Linking/pic/mochi.png';
+import pizza from '/public/images/Game/Linking/pic/pizza.png';
+import pudding from '/public/images/Game/Linking/pic/pudding.png';
+import strawberry from '/public/images/Game/Linking/pic/strawberry.png';
+import white from '/public/images/Game/Linking/pic/white.png';
 
-import acrossLine from './svg/acrossLine.svg'
-import downToLeftLine from './svg/downToLeftLine.svg'
-import downToRightLine from './svg/downToRightLine.svg'
-import upToLeftLine from './svg/upToLeftLine.svg'
-import upToRightLine from './svg/upToRightLine.svg'
-import verticalLine from './svg/verticalLine.svg'
+import acrossLine from '/public/images/Game/Linking/svg/acrossLine.svg'
+import downToLeftLine from '/public/images/Game/Linking/svg/downToLeftLine.svg'
+import downToRightLine from '/public/images/Game/Linking/svg/downToRightLine.svg'
+import upToLeftLine from '/public/images/Game/Linking/svg/upToLeftLine.svg'
+import upToRightLine from '/public/images/Game/Linking/svg/upToRightLine.svg'
+import verticalLine from '/public/images/Game/Linking/svg/verticalLine.svg'
 
 import './index.less';
 
@@ -289,7 +289,7 @@ export default () => {
 
                   // 让人看两秒再触发消除效果
                   setTimeout(function () {
-                    showSound("./sound/removeSuccess.mp3");
+                    showSound("/public/sound/removeSuccess.mp3");
 
                     $("#" + temId1).addClass("clearUp");
                     $("#" + temId2).addClass("clearUp");
@@ -329,7 +329,7 @@ export default () => {
 
                       // 检测是否消除完所有方块
                       if (isRemoveAll()) {
-                        showSound("./sound/pulinpulin.mp3");
+                        showSound("/public/sound/pulinpulin.mp3");
                         alert("恭喜你已消除完所有方块了！");
                       } else {
                         // 检测是否死锁
@@ -345,7 +345,7 @@ export default () => {
                   }, 200);
                 } else {
                   setTimeout(function () {
-                    showSound("./sound/removeFail.mp3");
+                    showSound("/public/sound/removeFail.mp3");
 
                     $("#" + selectDivId.id1).removeClass("border");
                     $("#" + selectDivId.id2).removeClass("border");
@@ -1204,8 +1204,6 @@ export default () => {
     );
     audioJQ.appendTo("body");
   }
-
-  console.log("======")
 
   return (
     <div className="container" id="container"></div>

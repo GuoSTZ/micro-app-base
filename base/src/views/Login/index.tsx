@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Space, Input, Button, Form, Checkbox } from 'antd';
 import { EyeInvisibleOutlined, EyeTwoTone, UserOutlined, LockOutlined } from '@ant-design/icons';
 import CarouselView from './components/CarouselView';
-import one from './images/1.png'
-import two from './images/2.png'
-import three from './images/3.png'
-import homeSvg from './images/home.svg'
+import one from '/public/images/Login/1.png'
+import two from '/public/images/Login/2.png'
+import three from '/public/images/Login/3.png'
+import homeSvg from '/public/images/Login/home.svg'
 import styles from './index.module.less'
 
 export default () => {
