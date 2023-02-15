@@ -113,15 +113,9 @@ const LayoutWrapper: React.FC<any> = props => {
               onOpenChange={handleMenuOpen}
             />
           </Sider>
-          <Layout style={{ padding: '0 24px 24px' }}>
+          <Layout className={styles.baseContainer}>
             <Breadcrumb data={breadcrumbData}/>
-            <Content
-              className={styles.baseContent}
-              style={{
-                margin: 0,
-                minHeight: 280,
-              }}
-            >
+            <Content className={styles.baseContent}>
               {children}
             </Content>
           </Layout>

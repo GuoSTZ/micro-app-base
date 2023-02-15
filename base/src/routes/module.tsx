@@ -6,6 +6,7 @@ import { config } from './config';
 import i18n, { locale } from '@/locales';
 import Home from '@/views/Home';
 import Login from '@/views/Login';
+import Game from '@/views/Game';
 
 const getConfig = (name: string) => {
   return {
@@ -26,6 +27,12 @@ const ModuleRoutes: RoutesType[] = [
     name: "登录页（临时）",
     icon: <HomeOutlined />,
     element: <Login />
+  },
+  {
+    path: "game/*",
+    name: "休闲",
+    icon: <HomeOutlined />,
+    element: <Game />
   },
   {
     path: "menuOne/*",

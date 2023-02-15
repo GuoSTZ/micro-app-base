@@ -1,0 +1,83 @@
+.container {
+  /* 引入flex布局 */
+  display: -webkit-flex;
+  /* Safari */
+  display: flex;
+
+  /* 主轴方向 */
+  flex-direction: row;
+  /* 超行怎么做 */
+  flex-wrap: wrap;
+  /* 沿轴布局 */
+  justify-content: center;
+  /* 垂直轴布局 */
+  align-items: center;
+  /* 多轴布局 */
+  align-content: center;
+
+  width: 100%;
+  height: 100%;
+
+  /* background-color: aquamarine; */
+}
+
+.main {
+  /* 引入flex布局 */
+  display: -webkit-flex;
+  /* Safari */
+  display: flex;
+
+  /* 主轴方向 */
+  flex-direction: row;
+  /* 超行怎么做 */
+  flex-wrap: wrap;
+  /* 沿轴布局 */
+  justify-content: flex-start;
+  /* 垂直轴布局 */
+  align-items: flex-start;
+  /* 多轴布局 */
+  align-content: flex-start;
+
+  border: 1px solid black;
+
+  /* background-image: url("./pic/cake.png"); */
+}
+
+.line {
+  /* 引入flex布局 */
+  display: -webkit-flex;
+  /* Safari */
+  display: flex;
+
+  /* 主轴方向 */
+  flex-direction: row;
+  /* 超行怎么做 */
+  flex-wrap: wrap;
+  /* 沿轴布局 */
+  justify-content: center;
+  /* 垂直轴布局 */
+  align-items: center;
+  /* 多轴布局 */
+  align-content: center;
+
+  width: 100%;
+  height: 50px;
+
+  /* background-color: bisque; */
+}
+
+.box {
+  box-sizing: border-box;
+  /*加了边框之后会挤压内部元素而不是外部元素，这样图片会向内缩小*/
+  width: 50px;
+  height: 50px;
+}
+
+.border {
+  border: 1px solid gold;
+}
+
+.clearUp {
+  opacity: 0;
+  transition: 0.2s;
+}
