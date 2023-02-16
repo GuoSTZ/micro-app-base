@@ -19,6 +19,10 @@ import upToLeftLine from '/public/images/Game/Linking/svg/upToLeftLine.svg'
 import upToRightLine from '/public/images/Game/Linking/svg/upToRightLine.svg'
 import verticalLine from '/public/images/Game/Linking/svg/verticalLine.svg'
 
+import pulinpulinMp3 from '/public/sound/pulinpulin.mp3'
+import removeFailMp3 from '/public/sound/removeFail.mp3'
+import removeSuccessMp3 from '/public/sound/removeSuccess.mp3'
+
 import './index.less';
 
 export default () => {
@@ -289,7 +293,7 @@ export default () => {
 
                   // 让人看两秒再触发消除效果
                   setTimeout(function () {
-                    showSound("/public/sound/removeSuccess.mp3");
+                    showSound(removeSuccessMp3);
 
                     $("#" + temId1).addClass("clearUp");
                     $("#" + temId2).addClass("clearUp");
@@ -329,7 +333,7 @@ export default () => {
 
                       // 检测是否消除完所有方块
                       if (isRemoveAll()) {
-                        showSound("/public/sound/pulinpulin.mp3");
+                        showSound(pulinpulinMp3);
                         alert("恭喜你已消除完所有方块了！");
                       } else {
                         // 检测是否死锁
@@ -345,7 +349,7 @@ export default () => {
                   }, 200);
                 } else {
                   setTimeout(function () {
-                    showSound("/public/sound/removeFail.mp3");
+                    showSound(removeFailMp3);
 
                     $("#" + selectDivId.id1).removeClass("border");
                     $("#" + selectDivId.id2).removeClass("border");
@@ -1199,9 +1203,14 @@ export default () => {
     /**因为音效元素是追加的，所以每次生成之前，将原来的删除掉*/
     $("#hintMusic").remove();
     /**创建audio标签的Jquery对象，然后追加到body进行播放即可*/
-    let audioJQ = $(
-      "<audio src='" + audioSrc + "' autoplay id='hintMusic'/>"
-    );
+    // let audioJQ = $(
+    //   "<audio src='" + audioSrc + "' autoplay id='hintMusic'/>"
+    // );
+    let audioJQ = $('<audio />', {
+      src: audioSrc,
+      autoplay: true,
+      id: 'hintMusic'
+    });
     audioJQ.appendTo("body");
   }
 

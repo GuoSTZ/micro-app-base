@@ -68,7 +68,7 @@
   },
   "include": [
     "src"
-, "public/js/jquery.js"  ],
+  ],
   "exclude": [
     "node_modules",
     "dist",

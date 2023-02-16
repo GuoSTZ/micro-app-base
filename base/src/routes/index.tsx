@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet, Navigate } from 'react-router-dom';
-import ModuleRoutes from './module';
+import moduleRoutes from './module';
 
 export type RoutesType = {
   id?: string;
@@ -21,7 +21,7 @@ const rootRoutes: Array<RoutesType> = [
     path: `${NAME_SPACE}/*`,
     element: <Outlet />,
     children: [
-      ...ModuleRoutes,
+      ...moduleRoutes,
       // {
       //   path: "*",
       //   element: <Navigate to={`${NAME_SPACE}`} />

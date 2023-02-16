@@ -66,7 +66,7 @@ const common = {
         exclude: /node_modules/,
       },
       {
-        test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+        test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/, /\.mp3$/],
         type: 'asset',
         parser: {
           dataUrlCondition: {

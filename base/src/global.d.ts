@@ -8,6 +8,13 @@ declare namespace NodeJS {
     ENV: string;
   }
 }
+
+interface Window {
+  devToolsExtension: any
+  __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any
+  [key: string]: any
+}
+
 declare module '*.svg' {
   const content: any
   export default content
@@ -17,10 +24,10 @@ declare module '*.png' {
   const content: any
   export default content
 }
-interface Window {
-  devToolsExtension: any
-  __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any
-  [key: string]: any
+
+declare module '*.mp3' {
+  const content: any
+  export default content
 }
 
 declare module '*.jpg' {

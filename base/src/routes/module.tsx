@@ -7,6 +7,7 @@ import i18n, { locale } from '@/locales';
 import Home from '@/views/Home';
 import Login from '@/views/Login';
 import Game from '@/views/Game';
+import { Outlet } from 'react-router-dom';
 
 const getConfig = (name: string) => {
   return {
@@ -15,7 +16,7 @@ const getConfig = (name: string) => {
   }
 }
 
-const ModuleRoutes: RoutesType[] = [
+const moduleRoutes: RoutesType[] = [
   {
     path: "home/*",
     name: i18n.t("base.menu.homePage"),
@@ -104,16 +105,24 @@ const ModuleRoutes: RoutesType[] = [
     ]
   },
   {
-    path: "reactTestApp/*",
-    name: i18n.t("base.menu.reactTestApp"),
+    path: 'cli/*',
+    name: i18n.t("base.menu.cli"),
     icon: <HomeOutlined />,
-    element: <MicroApp {...getConfig('reactTestApp')}/>
-  },
-  {
-    path: "vueApp/*",
-    name: i18n.t("base.menu.vueApp"),
-    icon: <HomeOutlined />,
-    element: <MicroApp {...getConfig('vueApp')}/>
+    element: <Outlet />,
+    children: [
+      {
+        path: "reactTestApp/*",
+        name: i18n.t("base.menu.reactTestApp"),
+        icon: <HomeOutlined />,
+        element: <MicroApp {...getConfig('reactTestApp')}/>
+      },
+      {
+        path: "vueApp/*",
+        name: i18n.t("base.menu.vueApp"),
+        icon: <HomeOutlined />,
+        element: <MicroApp {...getConfig('vueApp')}/>
+      },
+    ]
   },
   {
     path: "demo/*",
@@ -129,4 +138,4 @@ const ModuleRoutes: RoutesType[] = [
   // },
 ]
 
-export default ModuleRoutes;
+export default moduleRoutes;
