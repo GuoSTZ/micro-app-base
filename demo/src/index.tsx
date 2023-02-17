@@ -64,6 +64,6 @@ const mount = (data?: any) => {
 // 微前端环境下，注册mount和unmount方法
 if (window.__MICRO_APP_ENVIRONMENT__) {
   window[`micro-app-${window.__MICRO_APP_NAME__}`] = { mount, unmount }
+} else {
+  mount();
 }
-
-mount();

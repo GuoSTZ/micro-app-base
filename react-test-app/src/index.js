@@ -6,19 +6,26 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
 
-window.unmount = () => {
+const unmount = () => {
   console.log(`${window.__MICRO_APP_NAME__}子应用已经卸载`)
   root.unmount()
 }
 
-window.onmount = (data) => {
+const mount = (data) => {
+  root.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  )
   console.log(`${window.__MICRO_APP_NAME__}子应用已经渲染`, data)
+}
+
+// 微前端环境下，注册mount和unmount方法
+if (window.__MICRO_APP_ENVIRONMENT__) {
+  window[`micro-app-${window.__MICRO_APP_NAME__}`] = { mount, unmount }
+} else {
+  mount();
 }
 
 // If you want to start measuring performance in your app, pass a function
