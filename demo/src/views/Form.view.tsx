@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { Button } from 'antd';
 import * as actions from '@/action';
 import Panel from '@/components/Panel';
 import FormRender from '@/components/FormRender';
 import { locale } from '@/locales';
-import './index.module.less';
-import { Button } from 'antd';
 import Toolbar from '@/components/Toolbar';
+import './index.less';
+
 
 let form;
 

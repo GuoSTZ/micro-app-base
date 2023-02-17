@@ -9,7 +9,7 @@ import Panel from '@/components/Panel';
 import useTableData from '@/hooks/useTableData';
 import { locale } from '@/locales';
 import TableOperation from '@/components/TableOperation';
-import './index.module.less';
+import './index.less';
 
 export default () => {
   const navigate = useNavigate();

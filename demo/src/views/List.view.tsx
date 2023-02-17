@@ -5,10 +5,11 @@ import { useNavigate } from 'react-router-dom';
 import * as actions from '@/action';
 import Toolbar from '@/components/Toolbar';
 import DataTable from '@/components/DataTable';
+import Panel from '@/components/Panel';
 import useTableData from '@/hooks/useTableData';
 import { locale } from '@/locales';
 import TableOperation from '@/components/TableOperation';
-import './index.module.less';
+import './index.less';
 
 export default () => {
   const navigate = useNavigate();
@@ -62,8 +63,8 @@ export default () => {
   ];
 
   return (
-    <div>
-      <Toolbar>
+    <Panel footer={false} className="listView">
+      <Toolbar className='listView-toolbar'>
         <Button type="primary" onClick={() => navigate('add')}>{locale("common.operations.new")}</Button>
         <Button type="primary" onClick={() => navigate('schema')}>{locale("demo.list.schema")}</Button>
       </Toolbar>
@@ -78,6 +79,6 @@ export default () => {
         }}
         rowSelection={null}
       />
-    </div>
+    </Panel>
   )
 }

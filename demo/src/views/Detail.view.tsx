@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import * as actions from '@/action';
 import SchemaDescriptions from '@/components/SchemaDescriptions';
 import Panel from '@/components/Panel';
-import './index.module.less';
+import './index.less';
 
 export default () => {
   const navigate = useNavigate();
