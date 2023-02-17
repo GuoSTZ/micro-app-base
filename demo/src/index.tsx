@@ -13,7 +13,7 @@ const root = createRoot(container);
 
 global.API_PREFIX = '/gs';
 if(ENV === 'development') {
-  global.API_PREFIX = 'http://114.116.6.135:3000';
+  global.API_PREFIX = 'http://114.116.6.135:1446/gs';
 }
 
 const App = () => {
