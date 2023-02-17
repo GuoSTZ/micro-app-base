@@ -11,7 +11,7 @@ import './index.css';
 const container = document.getElementById('root');
 const root = createRoot(container);
 
-global.API_PREFIX = '';
+global.API_PREFIX = '/gs';
 if(ENV === 'development') {
   global.API_PREFIX = 'http://114.116.6.135:3000';
 }
