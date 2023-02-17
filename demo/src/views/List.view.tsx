@@ -63,8 +63,8 @@ export default () => {
   ];
 
   return (
-    <Panel footer={false} className="listView">
-      <Toolbar className='listView-toolbar'>
+    <Panel footer={false}>
+      <Toolbar>
         <Button type="primary" onClick={() => navigate('add')}>{locale("common.operations.new")}</Button>
         <Button type="primary" onClick={() => navigate('schema')}>{locale("demo.list.schema")}</Button>
       </Toolbar>
