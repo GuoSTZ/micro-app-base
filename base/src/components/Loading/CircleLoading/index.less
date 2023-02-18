@@ -1,0 +1,98 @@
+@containerSize: 150px;
+@circleSize: 10px;
+@circleCount: 36;
+@circleDeg: 360deg / @circleCount;
+@duration: 2s;
+
+.CircleLoading {
+  position: relative;
+  width: @containerSize;
+  height: @containerSize;
+  border-radius: 50%;
+
+  perspective: 70px;
+  transform-style: preserve-3d;
+
+  .circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: @circleSize;
+    height: @circleSize;
+    margin-left: calc(-@circleSize / 2);
+    margin-top: calc(-@circleSize / 2);
+
+    &::before, &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+    }
+
+    &::before {
+      top: -100%;
+      background-color: #000;
+      animation: spin1 @duration infinite;
+    }
+
+    &::after {
+      top: 100%;
+      background-color: aquamarine;
+      animation: spin2 @duration infinite;
+    }
+  }
+}
+
+.loop(@i) when(@i <= @circleCount) {
+  .circle:nth-child(@{i}) {
+    transform: rotate(calc(@circleDeg * @i)) translateY(calc(-@containerSize/2));
+    &::before, &::after {
+      animation-delay:  calc( - @duration / @circleCount * @i * 6);
+    }
+  }
+  .loop(@i + 1);
+}
+
+.loop(1);
+
+// 暂时通过z-index来模拟3d效果，由于未知原因，目前3d并未开启成功
+@keyframes spin1 {
+  0% {
+    animation-timing-function: ease-in;
+  }
+  25% {
+    transform: translate3d(0, 100%, 10px);
+    animation-timing-function: ease-out;
+    z-index: 10;
+  }
+  50% {
+    transform: translate3d(0, 200%, 0);
+    animation-timing-function: ease-in;
+  }
+  75% {
+    transform: translate3d(0, 100%, -10px);
+    animation-timing-function: ease-out;
+    z-index: 20;
+  }
+}
+
+@keyframes spin2 {
+  0% {
+    animation-timing-function: ease-in;
+  }
+  25% {
+    transform: translate3d(0, -100%, -10px);
+    animation-timing-function: ease-out;
+    z-index: 11;
+  }
+  50% {
+    transform: translate3d(0, -200%, 0);
+    animation-timing-function: ease-in;
+  }
+  75% {
+    transform: translate3d(0, -100%, 10px);
+    animation-timing-function: ease-out;
+    z-index: 19;
+  }
+}
