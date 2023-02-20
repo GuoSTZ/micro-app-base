@@ -118,6 +118,10 @@ const LayoutWrapper: React.FC<any> = props => {
             <Content className={styles.baseContent}>
               {children}
             </Content>
+            <footer className={styles.baseFooter}>
+              <span style={{marginRight: 16}}>浙ICP备19012881号-2</span>
+              <span>author@guosheng</span>
+            </footer>
           </Layout>
         </Layout>
       </Layout>
