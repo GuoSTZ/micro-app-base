@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Space, Input, Button, Form, Checkbox } from 'antd';
 import { EyeInvisibleOutlined, EyeTwoTone, UserOutlined, LockOutlined } from '@ant-design/icons';
 import CarouselView from './components/CarouselView';
-import one from '/public/images/Login/1.png'
-import two from '/public/images/Login/2.png'
-import three from '/public/images/Login/3.png'
-import homeSvg from '/public/images/Login/home.svg'
+import homeSvg from './images/home.svg'
+import holdon from './images/holdon.svg';
+import maintenance from './images/maintenance.svg';
+import success from './images/success.svg';
+import update from './images/update.svg';
 import styles from './index.module.less'
 
 export default () => {
@@ -30,9 +31,10 @@ export default () => {
           <CarouselView
             autoplay
             dataSource={[
-              <img src={one} height={"100%"} width={'100%'} />,
-              <img src={two} height={"100%"} width={'100%'} />,
-              <img src={three} height={"100%"} width={'100%'} />,
+              <img src={holdon} height={430} width={680} />,
+              <img src={maintenance} height={430} width={680} />,
+              <img src={success} height={430} width={680} />,
+              <img src={update} height={430} width={680} />,
             ]} />
         </div>
         {/* 登录框 */}
