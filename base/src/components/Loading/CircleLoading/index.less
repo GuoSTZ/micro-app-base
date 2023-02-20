@@ -10,9 +10,6 @@
   height: @containerSize;
   border-radius: 50%;
 
-  perspective: 70px;
-  transform-style: preserve-3d;
-
   .circle {
     position: absolute;
     top: 50%;
@@ -21,8 +18,11 @@
     height: @circleSize;
     margin-left: calc(-@circleSize / 2);
     margin-top: calc(-@circleSize / 2);
+    perspective: 70px;
+    transform-style: preserve-3d;
 
-    &::before, &::after {
+    &::before,
+    &::after {
       content: "";
       position: absolute;
       width: 100%;
@@ -44,13 +44,16 @@
   }
 }
 
-.loop(@i) when(@i <= @circleCount) {
+.loop(@i) when(@i <=@circleCount) {
   .circle:nth-child(@{i}) {
     transform: rotate(calc(@circleDeg * @i)) translateY(calc(-@containerSize/2));
-    &::before, &::after {
-      animation-delay:  calc( - @duration / @circleCount * @i * 6);
+
+    &::before,
+    &::after {
+      animation-delay: calc(-@duration / @circleCount * @i * 6);
     }
   }
+
   .loop(@i + 1);
 }
 
@@ -61,15 +64,18 @@
   0% {
     animation-timing-function: ease-in;
   }
+
   25% {
     transform: translate3d(0, 100%, 10px);
     animation-timing-function: ease-out;
     z-index: 10;
   }
+
   50% {
     transform: translate3d(0, 200%, 0);
     animation-timing-function: ease-in;
   }
+
   75% {
     transform: translate3d(0, 100%, -10px);
     animation-timing-function: ease-out;
@@ -81,15 +87,18 @@
   0% {
     animation-timing-function: ease-in;
   }
+
   25% {
     transform: translate3d(0, -100%, -10px);
     animation-timing-function: ease-out;
     z-index: 11;
   }
+
   50% {
     transform: translate3d(0, -200%, 0);
     animation-timing-function: ease-in;
   }
+
   75% {
     transform: translate3d(0, -100%, 10px);
     animation-timing-function: ease-out;
