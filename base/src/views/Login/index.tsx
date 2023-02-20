@@ -3,6 +3,7 @@ import { Space, Input, Button, Form, Checkbox } from 'antd';
 import { EyeInvisibleOutlined, EyeTwoTone, UserOutlined, LockOutlined } from '@ant-design/icons';
 import CarouselView from './components/CarouselView';
 import homeSvg from './images/home.svg'
+import planetSvg from './images/planet.svg'
 import holdon from './images/holdon.svg';
 import maintenance from './images/maintenance.svg';
 import success from './images/success.svg';
@@ -22,7 +23,7 @@ export default () => {
   return (
     <div className={styles.login}>
       <header>
-        <img src={homeSvg} width={32}/> 开发记录
+        <img src={planetSvg} width={64}/> 开发记录
       </header>
 
       <div className={styles['login-content']}>
@@ -31,10 +32,10 @@ export default () => {
           <CarouselView
             autoplay
             dataSource={[
-              <img src={holdon} height={430} width={680} />,
               <img src={maintenance} height={430} width={680} />,
-              <img src={success} height={430} width={680} />,
+              <img src={holdon} height={430} width={680} />,
               <img src={update} height={430} width={680} />,
+              <img src={success} height={430} width={680} />,
             ]} />
         </div>
         {/* 登录框 */}
