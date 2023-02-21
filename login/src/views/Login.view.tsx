@@ -29,7 +29,7 @@ export default () => {
         {/* 轮播图 */}
         <div className={styles['login-swiper']}>
           <CarouselView
-            // autoplay
+            autoplay
             dataSource={[
               <img src={maintenance} height={430} width={680} />,
               <img src={holdon} height={430} width={680} />,
