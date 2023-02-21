@@ -1,0 +1,119 @@
+@headerHeight: 64px;
+@footerHeight: 40px;
+
+.login {
+  position: relative;
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  
+  flex-direction: column;
+  overflow: hidden;
+
+  > header {
+    display: flex;
+    align-items: center;
+    height: @headerHeight;
+    padding-left: 16px;
+    line-height: @headerHeight;
+    font-size: 24px;
+
+    > img {
+      margin-right: 8px;
+    }
+  }
+
+  &-content {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: @footerHeight;
+    
+    .login-swiper {
+      height: 430px;
+      width: 680px;
+      margin-right: 40px;
+      z-index: 1;
+  
+      :global {
+        .ant-carousel {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  
+    .login-wrap {
+      height: 430px;
+      width: 380px;
+      background-color: #fff;
+      box-shadow: 
+        0 3px 6px -4px rgba(0, 0, 0, 0.12), 
+        0 6px 16px 0 rgba(0, 0, 0, 0.08), 
+        0 9px 28px 8px rgba(0, 0, 0, 0.05);
+      border-radius: 2px;
+      padding: 20px 40px 10px;
+      z-index: 1;
+      box-sizing: border-box;
+  
+      &-form {
+        margin-top: 20px;
+      }
+  
+      .submit-button {
+        width: 100%;
+        height: 40px;
+      }
+  
+      .reset-password {
+  
+      }
+  
+      &-extra {
+        width: 100%;
+        justify-content: space-between;
+      }
+  
+      :global {
+        h2 {
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  > footer {
+    width: 100%;
+    height: @footerHeight;
+    line-height: @footerHeight;
+    text-align: center;
+    color: #999AAA;
+  }
+
+  &-background-one {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 800px;
+    height: 800px;
+    background-image: linear-gradient(#1677ff, #387ff6);
+    border-radius: 50%;
+    mask: radial-gradient(transparent 300px, #000 300px);
+    transform: translate(430px, -200px);
+    z-index: 0;
+  }
+
+  &-background-two {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 200px;
+    height: 200px;
+    background-image: linear-gradient(#98c555, #bae778);
+    border-radius: 50%;
+    mask: radial-gradient(transparent 50px, #000 50px);
+    transform: translate(-80px, 80px);
+    z-index: 1;
+  }
+}
