@@ -8,8 +8,7 @@ import { changeLanguage } from '@/locales';
 import routes from './router';
 import './index.css';
 
-const container = document.getElementById('root');
-const root = createRoot(container);
+let root = createRoot(document.getElementById('root'));
 
 global.API_PREFIX = '/gs';
 if(ENV === 'development') {
@@ -48,6 +47,9 @@ const unmount = () => {
 
 const mount = (data?: any) => {
   const mergedBaseName = window.__MICRO_APP_BASE_ROUTE__ ? `${window.__MICRO_APP_BASE_ROUTE__}/${window.__MICRO_APP_NAME__}` : ''
+  if(!root['_internalRoot']) {
+    root = createRoot(document.getElementById('root'));
+  }
 
   root.render(
     <React.StrictMode>

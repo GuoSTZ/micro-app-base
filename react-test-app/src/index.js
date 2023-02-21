@@ -5,7 +5,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+let root = ReactDOM.createRoot(document.getElementById('root'));
 
 const unmount = () => {
   console.log(`${window.__MICRO_APP_NAME__}子应用已经卸载`)
@@ -13,6 +13,10 @@ const unmount = () => {
 }
 
 const mount = (data) => {
+  if(!root['_internalRoot']) {
+    root = ReactDOM.createRoot(document.getElementById('root'));
+  }
+
   root.render(
     <React.StrictMode>
       <App />
