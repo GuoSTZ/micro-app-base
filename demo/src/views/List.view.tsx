@@ -1,5 +1,4 @@
 import { Button } from 'antd';
-import { ColumnsType } from 'antd/es/table';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as actions from '@/action';

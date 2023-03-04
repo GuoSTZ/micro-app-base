@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "module": "es2020",
+    "target": "es5",
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node"
+  }
+}

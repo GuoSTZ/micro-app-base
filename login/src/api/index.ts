@@ -6,4 +6,4 @@ const defaultConfig = {
 }
 
 export const fetchSchema = (params: object = {}, config: AxiosRequestConfig = defaultConfig) => 
-  FetchUtils.fetchGet(`${API_PREFIX}/login/getSchema`, params, config);
+  FetchUtils.fetchGet(`${API_PREFIX}/demo/get`, params, config);

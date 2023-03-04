@@ -7,9 +7,18 @@ import holdon from '/public/images/holdon.svg';
 import maintenance from '/public/images/maintenance.svg';
 import success from '/public/images/success.svg';
 import update from '/public/images/update.svg';
-import styles from './index.module.less'
+import './index.less'
+
+import { schemaAtom } from '@/atoms';
+import { useSchemaAtom } from '@/action';
+import { useAtom } from 'jotai';
 
 export default () => {
+  const [schema] = useAtom(schemaAtom)
+
+  useEffect(() => {
+    useSchemaAtom();
+  }, [])
 
   const onFinish = (values: any) => {
     console.log('Success:', values);
@@ -20,14 +29,14 @@ export default () => {
   };
 
   return (
-    <div className={styles.login}>
+    <div className={"login"}>
       <header>
         <img src={planetSvg} width={64}/> 开发记录
       </header>
 
-      <div className={styles['login-content']}>
+      <div className={'login-content'}>
         {/* 轮播图 */}
-        <div className={styles['login-swiper']}>
+        <div className={'login-swiper'}>
           <CarouselView
             autoplay
             dataSource={[
@@ -38,11 +47,11 @@ export default () => {
             ]} />
         </div>
         {/* 登录框 */}
-        <div className={styles['login-wrap']}>
+        <div className={'login-wrap'}>
           <h2>用户登录</h2>
           <Form
             name="basic"
-            className={styles['login-wrap-form']}
+            className={'login-wrap-form'}
             initialValues={{ remember: true }}
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
@@ -76,14 +85,14 @@ export default () => {
             </Form.Item>
 
             <Form.Item>
-              <Button type="primary" htmlType="submit" className={styles['submit-button']}>
+              <Button type="primary" htmlType="submit" className={'submit-button'}>
                 登录
               </Button>
             </Form.Item>
           </Form>
-          <Space className={styles['login-wrap-extra']}>
+          <Space className={'login-wrap-extra'}>
             <div>没有账号？<a>前往注册</a></div>
-            <div className={styles['reset-password']}><a>忘记密码？</a></div>
+            <div className={'reset-password'}><a>忘记密码？</a></div>
           </Space>
         </div>
       </div>
@@ -91,8 +100,8 @@ export default () => {
       <footer>浙ICP备19012881号-2</footer>
 
       {/* 背景样式 */}
-      <div className={styles['login-background-one']} />
-      <div className={styles['login-background-two']} />
+      <div className={'login-background-one'} />
+      <div className={'login-background-two'} />
     </div>
   )
 }
