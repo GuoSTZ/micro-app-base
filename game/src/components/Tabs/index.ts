@@ -3,7 +3,7 @@ import './index.less';
 type DataType = {
   key: string;
   label: string;
-  children: HTMLElement|string;
+  children: HTMLElement | string;
 }
 
 interface TabsProps {
@@ -63,10 +63,23 @@ export default class Tabs {
     tabsNav.appendChild(navFragment)
     tabsContent.appendChild(contentFragment)
 
+    // 创建滑块
+    const bar = document.createElement('div')
+    bar.classList.add('tabs-nav-bar', 'tabs-nav-bar-animated')
+    console.log(dataObj['nav'][0], dataObj['nav'][0].offsetWidth)
+    setTimeout(() => {
+      bar.style.width = `${dataObj['nav'][0].offsetWidth}px`
+    }, 0)
+    bar.style.left = `0px`
+    tabsNav.appendChild(bar)
+
     dataObj['nav'].forEach((item, index) => {
       item.addEventListener('click', () => {
         // 点击非激活状态下的 tab nav 时
         if (!item.classList.contains('tabs-nav-item-active')) {
+          bar.style.width = `${item.offsetWidth}px`
+          bar.style.left = `${item.offsetLeft}px`
+
           const currentTabNav = document.querySelector('.tabs-nav-item-active');
           currentTabNav.classList.remove('tabs-nav-item-active')
           item.classList.add('tabs-nav-item-active')
@@ -81,7 +94,6 @@ export default class Tabs {
         }
       })
     })
-
     return tabs
   }
 }

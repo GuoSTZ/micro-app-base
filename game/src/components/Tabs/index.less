@@ -1,6 +1,8 @@
 .tabs {
   .tabs-nav {
+    position: relative;
     display: flex;
+    margin-bottom: 16px;
     border-bottom: 1px solid rgba(5, 5, 5, 0.06);
 
     .tabs-nav-item {
@@ -20,6 +22,18 @@
     .tabs-nav-item.tabs-nav-item-active {
       color: #1677ff;
       text-shadow: 0 0 .25px currentcolor;
+    }
+
+    &-bar {
+      position: absolute;
+      bottom: 0;
+      height: 2px;
+      background: #1677ff;
+      pointer-events: none;
+    }
+
+    &-bar-animated {
+      transition: width .3s, left .3s, right .3s;
     }
   }
   .tabs-content {

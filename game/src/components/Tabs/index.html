@@ -10,7 +10,9 @@
     .tabs {}
 
     .tabs .tabs-nav {
+      position: relative;
       display: flex;
+      margin-bottom: 16px;
       border-bottom: 1px solid rgba(5, 5, 5, 0.06);
     }
 
@@ -33,10 +35,24 @@
       text-shadow: 0 0 .25px currentcolor;
     }
 
+    .tabs .tabs-content {}
+
     .tabs .tabs-content .tabs-content-item {}
 
     .tabs .tabs-content .tabs-content-item.tabs-content-item-hidden {
       display: none;
+    }
+
+    .tabs .tabs-nav .tabs-nav-bar {
+      position: absolute;
+      bottom: 0;
+      height: 2px;
+      background: #1677ff;
+      pointer-events: none;
+    }
+
+    .tabs .tabs-nav .tabs-nav-bar-animated {
+      transition: width .3s, left .3s, right .3s;
     }
   </style>
 </head>
@@ -44,7 +60,6 @@
 <body>
   <div class="tabs">
     <div class="tabs-nav">
-      <div id="bar"></div>
     </div>
     <div class="tabs-content">
     </div>
@@ -104,10 +119,20 @@
   tabs_nav.appendChild(navFragment)
   tabs_content.appendChild(contentFragment)
 
+  // 创建滑块
+  const bar = document.createElement('div')
+  bar.classList.add('tabs-nav-bar', 'tabs-nav-bar-animated')
+  bar.style.width = `${dataObj['nav'][0].offsetWidth}px`
+  bar.style.left = 0
+  tabs_nav.appendChild(bar)
+
   dataObj['nav'].forEach((item, index) => {
     item.addEventListener('click', () => {
       // 点击非激活状态下的 tab nav 时
       if (!item.classList.contains('tabs-nav-item-active')) {
+        bar.style.width = `${item.offsetWidth}px`
+        bar.style.left = `${item.offsetLeft}px`
+
         const currentTabNav = document.querySelector('.tabs-nav-item-active');
         currentTabNav.classList.remove('tabs-nav-item-active')
         item.classList.add('tabs-nav-item-active')
