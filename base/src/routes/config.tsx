@@ -10,5 +10,8 @@ export const config = {
   // },
   'vueApp': {
     url: ENV === 'development' ? 'http://localhost:8093/' : `${window.location.origin}/vueApp/`
+  },
+  'game': {
+    url: ENV === 'development' ? 'http://localhost:8000/' : `${window.location.origin}/game/`
   }
 }

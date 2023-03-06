@@ -19,7 +19,8 @@
       },
       "reactTestApp": "react18 App",
       "vueApp": "vue3 App",
-      "umiApp": "umi App"
+      "umiApp": "umi App",
+      "game": "Game"
     }
   }
 }

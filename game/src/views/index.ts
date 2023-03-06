@@ -1,3 +1,6 @@
+import Tabs from '../components/Tabs';
+import HomeView from './Home'
+
 interface IProps {
   title: string;
   content: string;
@@ -13,18 +16,25 @@ export default class App {
   }
 
   render() {
-    const cardElement = document.createElement('div');
-    cardElement.classList.add('card');
-
-    const titleElement = document.createElement('h2');
-    titleElement.textContent = this.title;
-
-    const contentElement = document.createElement('p');
-    contentElement.textContent = this.content;
-
-    cardElement.appendChild(titleElement);
-    cardElement.appendChild(contentElement);
-
-    return cardElement;
+    const data = [
+      {
+        key: '1',
+        label: `Tab 1`,
+        children: new HomeView().render(),
+      },
+      {
+        key: '2',
+        label: `Tab 2`,
+        children: `Content of Tab Pane 2`,
+      },
+      {
+        key: '3',
+        label: `Tab 3`,
+        children: `Content of Tab Pane 3`,
+      },
+    ]
+    const tabs = new Tabs({data})
+    
+    return tabs.render()
   }
 }

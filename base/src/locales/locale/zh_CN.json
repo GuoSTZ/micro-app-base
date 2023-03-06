@@ -20,7 +20,8 @@
       "cli": "脚手架",
       "reactTestApp": "react18应用",
       "vueApp": "vue3应用",
-      "umiApp": "umi应用"
+      "umiApp": "umi应用",
+      "game": "休闲"
     }
   }
 }

@@ -1,0 +1,30 @@
+.tabs {
+  .tabs-nav {
+    display: flex;
+    border-bottom: 1px solid rgba(5, 5, 5, 0.06);
+
+    .tabs-nav-item {
+      transition: .2s;
+
+      &:not(last-child) {
+        margin-right: 32px;
+        padding: 12px 0;
+        cursor: pointer;
+      }
+
+      &:hover {
+        color: #4096ff;
+      }
+    }
+
+    .tabs-nav-item.tabs-nav-item-active {
+      color: #1677ff;
+      text-shadow: 0 0 .25px currentcolor;
+    }
+  }
+  .tabs-content {
+    .tabs-content-item.tabs-content-item-hidden {
+      display: none;
+    }
+  }
+}

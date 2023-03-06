@@ -30,12 +30,6 @@ const moduleRoutes: RoutesType[] = [
     element: <Login />
   },
   {
-    path: "game/*",
-    name: "休闲",
-    icon: <HomeOutlined />,
-    element: <Game />
-  },
-  {
     path: "menuOne/*",
     name: i18n.t("base.menu.one"),
     icon: <MailOutlined />,
@@ -136,6 +130,12 @@ const moduleRoutes: RoutesType[] = [
   //   icon: <HomeOutlined />,
   //   element: <MicroApp {...getConfig('umiApp')}/>
   // },
+  {
+    path: "game/*",
+    name: i18n.t("base.menu.game"),
+    icon: <HomeOutlined />,
+    element: <MicroApp {...getConfig('game')}/>
+  },
 ]
 
 export default moduleRoutes;
