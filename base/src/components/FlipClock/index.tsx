@@ -43,7 +43,6 @@ const FlipClock = () => {
       let now = new Date()
       let nowTimeStr = dayjs(new Date(now.getTime() + 600)).format('HHmmss')
       let nextTimeStr = dayjs(new Date(now.getTime() + 1600)).format('HHmmss')
-      console.log(nowTimeStr, nextTimeStr, '===')
       for (let i = 0; i < flipObjs.length; i++) {
         if (nowTimeStr[i] === nextTimeStr[i]) {
           continue

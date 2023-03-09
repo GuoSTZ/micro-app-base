@@ -13,8 +13,8 @@ export default (props: CarouselViemProps) => {
   return (
     <Carousel className={mergedClassName} dots={{className: "custom-slick"}} {...restProps}>
       {
-        dataSource.map((item: any) => (
-          <div className='carousel-view-item'>
+        dataSource.map((item: any, index: number) => (
+          <div className='carousel-view-item' key={index}>
             {item}
           </div>
         ))

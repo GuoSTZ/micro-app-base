@@ -42,7 +42,8 @@ export default function MicroApp(props: MicroAppProps) {
       lng: localStorage.i18nextLng,
       appName: name,
       path: location.pathname,
-      modulePath
+      modulePath,
+      API_PREFIX: global.API_PREFIX
     }
   }, [name, location.pathname])
 

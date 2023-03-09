@@ -13,5 +13,8 @@ export const config = {
   },
   'game': {
     url: ENV === 'development' ? 'http://localhost:8000/' : `${window.location.origin}/game/`
+  },
+  'login': {
+    url: ENV === 'development' ? 'http://localhost:8000/' : `${window.location.origin}/login/`
   }
 }

@@ -10,9 +10,14 @@ import './index.css';
 
 let root = createRoot(document.getElementById('root'));
 
+// 线上环境地址：http://114.116.6.135:1446/gs
 global.API_PREFIX = '/gs';
 if(ENV === 'development') {
-  global.API_PREFIX = 'http://114.116.6.135:1446/gs';
+  if (window.__MICRO_APP_ENVIRONMENT__) {
+    global.API_PREFIX = window.microApp.getData()?.API_PREFIX ?? 'http://localhost:1446/gs';
+  } else {
+    global.API_PREFIX = 'http://localhost:1446/gs';
+  }
 }
 
 const App = () => {
@@ -60,7 +65,9 @@ const mount = (data?: any) => {
       </BrowserRouter>
     </React.StrictMode>
   )
-  console.log(`${window.__MICRO_APP_NAME__}子应用已经渲染`, data)
+  if (window.__MICRO_APP_ENVIRONMENT__) {
+    console.log(`${window.__MICRO_APP_NAME__}子应用已经渲染`, data)
+  }
 }
 
 // 微前端环境下，注册mount和unmount方法

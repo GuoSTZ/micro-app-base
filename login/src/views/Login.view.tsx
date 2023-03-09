@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Space, Input, Button, Form, Checkbox } from 'antd';
 import { EyeInvisibleOutlined, EyeTwoTone, UserOutlined, LockOutlined } from '@ant-design/icons';
 import CarouselView from '@/components/CarouselView';
+import { encrypt } from '@/utils/encrypt';
 import planetSvg from '/public/images/planet.svg'
 import holdon from '/public/images/holdon.svg';
 import maintenance from '/public/images/maintenance.svg';
@@ -9,19 +10,33 @@ import success from '/public/images/success.svg';
 import update from '/public/images/update.svg';
 import './index.less'
 
-import { schemaAtom } from '@/atoms';
-import { useSchemaAtom } from '@/action';
+import { isLoginAtom, publicKeyAtom } from '@/atoms';
+import { useIsLoginAtom, fetchLogin } from '@/action';
 import { useAtom } from 'jotai';
 
 export default () => {
-  const [schema] = useAtom(schemaAtom)
+  useIsLoginAtom();
+  const [isLogin] = useAtom(isLoginAtom)
+  const [publicKey] = useAtom(publicKeyAtom)
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    useSchemaAtom();
-  }, [])
+    if (isLogin) {
+      window.location.href = window.origin
+    }
+  }, [isLogin])
 
   const onFinish = (values: any) => {
-    console.log('Success:', values);
+    values.password = encrypt(values.password, publicKey);
+    setLoading(true)
+    fetchLogin(
+      values,
+      () => {
+        window.location.href = window.origin
+      },
+      () => {
+        setLoading(false)
+      })
   };
 
   const onFinishFailed = (errorInfo: any) => {
@@ -31,7 +46,7 @@ export default () => {
   return (
     <div className={"login"}>
       <header>
-        <img src={planetSvg} width={64}/> 开发记录
+        <img src={planetSvg} width={64} /> 开发记录
       </header>
 
       <div className={'login-content'}>
@@ -40,9 +55,9 @@ export default () => {
           <CarouselView
             autoplay
             dataSource={[
+              <img src={update} height={430} width={680} />,
               <img src={maintenance} height={430} width={680} />,
               <img src={holdon} height={430} width={680} />,
-              <img src={update} height={430} width={680} />,
               <img src={success} height={430} width={680} />,
             ]} />
         </div>
@@ -85,7 +100,7 @@ export default () => {
             </Form.Item>
 
             <Form.Item>
-              <Button type="primary" htmlType="submit" className={'submit-button'}>
+              <Button type="primary" htmlType="submit" className={'submit-button'} loading={loading}>
                 登录
               </Button>
             </Form.Item>

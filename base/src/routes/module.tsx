@@ -27,7 +27,7 @@ const moduleRoutes: RoutesType[] = [
     path: "login/*",
     name: "登录页（临时）",
     icon: <HomeOutlined />,
-    element: <Login />
+    element: <MicroApp {...getConfig('login')}/>
   },
   {
     path: "menuOne/*",

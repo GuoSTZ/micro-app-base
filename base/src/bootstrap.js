@@ -13,8 +13,14 @@ microApp.start({
   'disable-patch-request': true, // 关闭对子应用请求的拦截
 })
 
-if(ENV === 'developmet') {
-  global.API_PREFIX = 'http://114.116.6.135:3000';
+// 线上环境地址：http://114.116.6.135:1446/gs
+global.API_PREFIX = '/gs';
+if(ENV === 'development') {
+  if (window.__MICRO_APP_ENVIRONMENT__) {
+    global.API_PREFIX = window.microApp.getData()?.API_PREFIX ?? 'http://localhost:1446/gs';
+  } else {
+    global.API_PREFIX = 'http://localhost:1446/gs';
+  }
 }
 
 root.render(

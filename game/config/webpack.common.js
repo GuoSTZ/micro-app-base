@@ -5,7 +5,7 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const packageJson = require('../package.json');
 
-const PORT = 8000
+const PORT = packageJson.port
 const NAME_SPACE = packageJson.name
 const resolveApp = relativePath => path.resolve(process.cwd(), relativePath)
 

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div style="width: 500px;height: 200px;display: flex;background-color: aliceblue;">
+    <div class="child1" style="width: 400px;background-color: aqua;flex-shrink: 0.3;"></div>
+    <div class="child2" style="width: 200px;background-color: aquamarine;flex-shrink: 0.2;"></div>
+  </div>
+</body>
+<script>
+  const child1 = document.querySelector('div.child1')
+  const child2 = document.querySelector('div.child2')
+
+  child1.innerHTML = child1.offsetWidth
+  child2.innerHTML = child2.offsetWidth
+
+
+  // 总的权重
+
+</script>
+
+</html>

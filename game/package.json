@@ -1,5 +1,6 @@
 {
   "name": "game",
+  "port": 8001,
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
