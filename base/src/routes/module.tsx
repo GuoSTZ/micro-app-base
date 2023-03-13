@@ -28,10 +28,10 @@ const moduleRoutes: RoutesType[] = [
     element: <Outlet />,
     children: [
       {
-        path: "reactTestApp/*",
-        name: i18n.t("base.menu.reactTestApp"),
+        path: "reactApp/*",
+        name: i18n.t("base.menu.reactApp"),
         icon: <HomeOutlined />,
-        element: <MicroApp {...getConfig('reactTestApp')}/>
+        element: <MicroApp {...getConfig('reactApp')}/>
       },
       {
         path: "vueApp/*",

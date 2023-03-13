@@ -17,7 +17,7 @@
         "F": "Module F",
         "G": "Module G"
       },
-      "reactTestApp": "react18 App",
+      "reactApp": "react18 App",
       "vueApp": "vue3 App",
       "umiApp": "umi App",
       "game": "Game"

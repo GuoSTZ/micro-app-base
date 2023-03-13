@@ -2,7 +2,7 @@ packages:
   # 所有在 packages/ 下的 package
   - 'base'
   - 'demo'
-  - 'react-test-app'
+  - 'react-app'
   - 'vue-app'
   - 'game'
   - 'login'
