@@ -8,7 +8,7 @@ const htmlWebpackPlugin = require('html-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const packageJson = require('../package.json')
 
-const PORT = packageJson.port
+const PORT = 8000
 const NAME_SPACE = packageJson.name
 
 const resolveApp = relativePath => path.resolve(process.cwd(), relativePath)
