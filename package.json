@@ -12,8 +12,9 @@
       "base",
       "demo",
       "react-test-app",
-      "umi-app",
-      "vue-app"
+      "vue-app",
+      "game",
+      "login"
     ]
   },
   "private": true,
