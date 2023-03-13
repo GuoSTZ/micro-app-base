@@ -12,7 +12,7 @@ export const config = {
     url: ENV === 'development' ? 'http://localhost:8093/' : `${window.location.origin}/vueApp/`
   },
   'game': {
-    url: ENV === 'development' ? 'http://localhost:8000/' : `${window.location.origin}/game/`
+    url: ENV === 'development' ? 'http://localhost:8001/' : `${window.location.origin}/game/`
   },
   'login': {
     url: ENV === 'development' ? 'http://localhost:8000/' : `${window.location.origin}/login/`
