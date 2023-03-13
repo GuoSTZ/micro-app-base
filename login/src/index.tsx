@@ -58,7 +58,7 @@ const mount = (data?: any) => {
 
   root.render(
     <React.StrictMode>
-      <BrowserRouter basename={mergedBaseName}>
+      <BrowserRouter>
         <ConfigProvider locale={zhCN}>
           <App />
         </ConfigProvider>

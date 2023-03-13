@@ -10,6 +10,11 @@ import translateSvg from './images/translate.svg';
 import {locale, changeLanguage} from '@/locales';
 import styles from './index.module.less';
 
+interface LayoutWrapperProps {
+  routes: any[];
+  basename?: string;
+}
+
 type RoutesJsonType = {
   id?: string;
   key?: string;
@@ -22,15 +27,16 @@ type RoutesJsonType = {
 
 const { Header, Content, Sider } = Layout;
 
-const LayoutWrapper: React.FC<any> = props => {
+const LayoutWrapper = (props: React.PropsWithChildren<LayoutWrapperProps>) => {
   const {
     children,
-    routes
+    routes,
+    basename = ''
   } = props;
   const navigate = useNavigate();
   const location = useLocation();
   const { pathname, search } = location;
-  const pathArr: string[] = pathname.split("/").filter(item => (item !== "" && item !== NAME_SPACE))
+  const pathArr: string[] = pathname.split("/").filter(item => (item !== "" && item !== basename))
   const pathKeys = React.useMemo(() => {
     return pathArr.slice(0, pathArr.length).reverse();
   }, [pathArr]);
@@ -67,7 +73,7 @@ const LayoutWrapper: React.FC<any> = props => {
   const handleMenuClick = (event) => {
     const { key, keyPath, domEvent } = event;
     const newPath = keyPath.reverse()?.join("/")
-    navigate(`${NAME_SPACE}/${newPath}`);
+    navigate(`${newPath}`);
   }
 
   const handleMenuOpen = (keys: string[]) => {

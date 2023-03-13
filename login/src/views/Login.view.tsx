@@ -20,9 +20,13 @@ export default () => {
   const [publicKey] = useAtom(publicKeyAtom)
   const [loading, setLoading] = useState(false)
 
+  const goHome = () => {
+    window.location.href = `${window.origin}/base/home`
+  }
+
   useEffect(() => {
     if (isLogin) {
-      window.location.href = window.origin
+      goHome()
     }
   }, [isLogin])
 
@@ -32,7 +36,8 @@ export default () => {
     fetchLogin(
       values,
       () => {
-        window.location.href = window.origin
+        goHome()
+        // localStorage.setItem('isLogin', '1')
       },
       () => {
         setLoading(false)
