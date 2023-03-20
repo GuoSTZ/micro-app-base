@@ -14,7 +14,8 @@
       "react-app",
       "vue-app",
       "game",
-      "login"
+      "login",
+      "three"
     ]
   },
   "private": true,

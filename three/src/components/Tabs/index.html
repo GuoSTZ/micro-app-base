@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .tabs {}
+
+    .tabs .tabs-nav {
+      position: relative;
+      display: flex;
+      margin-bottom: 16px;
+      border-bottom: 1px solid rgba(5, 5, 5, 0.06);
+    }
+
+    .tabs .tabs-nav .tabs-nav-item {
+      transition: .2s;
+    }
+
+    .tabs .tabs-nav .tabs-nav-item:not(last-child) {
+      margin-right: 32px;
+      padding: 12px 0;
+      cursor: pointer;
+    }
+
+    .tabs .tabs-nav .tabs-nav-item:hover {
+      color: #4096ff;
+    }
+
+    .tabs .tabs-nav .tabs-nav-item.tabs-nav-item-active {
+      color: #1677ff;
+      text-shadow: 0 0 .25px currentcolor;
+    }
+
+    .tabs .tabs-content {}
+
+    .tabs .tabs-content .tabs-content-item {}
+
+    .tabs .tabs-content .tabs-content-item.tabs-content-item-hidden {
+      display: none;
+    }
+
+    .tabs .tabs-nav .tabs-nav-bar {
+      position: absolute;
+      bottom: 0;
+      height: 2px;
+      background: #1677ff;
+      pointer-events: none;
+    }
+
+    .tabs .tabs-nav .tabs-nav-bar-animated {
+      transition: width .3s, left .3s, right .3s;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="tabs">
+    <div class="tabs-nav">
+    </div>
+    <div class="tabs-content">
+    </div>
+  </div>
+</body>
+<script>
+  const data = [
+    {
+      key: '1',
+      label: `Tab 1`,
+      children: `Content of Tab Pane 1`,
+    },
+    {
+      key: '2',
+      label: `Tab 2`,
+      children: `Content of Tab Pane 2`,
+    },
+    {
+      key: '3',
+      label: `Tab 3`,
+      children: `Content of Tab Pane 3`,
+    },
+  ]
+  const div = document.getElementById('tabs');
+  const tabs_nav = document.querySelector('.tabs-nav');
+  const tabs_content = document.querySelector('.tabs-content');
+  // fragment 处理
+  const navFragment = document.createDocumentFragment();
+  const contentFragment = document.createDocumentFragment();
+
+  const dataObj = {
+    nav: [],
+    content: []
+  }
+
+  data.forEach((item, index) => {
+    // 创建nav子元素
+    const tabs_nav_item = document.createElement('div');
+    tabs_nav_item.classList.add('tabs-nav-item');
+    // 直接默认选中第一项
+    index === 0 && (tabs_nav_item.classList.add('tabs-nav-item-active'))
+    tabs_nav_item.innerHTML = item.label;
+    navFragment.appendChild(tabs_nav_item);
+    dataObj['nav'].push(tabs_nav_item)
+
+    // 暂时直接创建content子元素，后续可根据点击tab时创建
+    const tabs_content_item = document.createElement('div');
+    tabs_content_item.classList.add('tabs-content-item');
+    // 直接默认展示第一项
+    index === 0 && (tabs_content_item.classList.add('tabs-content-item-active'))
+    index !== 0 && (tabs_content_item.classList.add('tabs-content-item-hidden'))
+    tabs_content_item.innerHTML = item.children;
+    contentFragment.appendChild(tabs_content_item);
+    dataObj['content'].push(tabs_content_item)
+  })
+
+  tabs_nav.appendChild(navFragment)
+  tabs_content.appendChild(contentFragment)
+
+  // 创建滑块
+  const bar = document.createElement('div')
+  bar.classList.add('tabs-nav-bar', 'tabs-nav-bar-animated')
+  bar.style.width = `${dataObj['nav'][0].offsetWidth}px`
+  bar.style.left = 0
+  tabs_nav.appendChild(bar)
+
+  dataObj['nav'].forEach((item, index) => {
+    item.addEventListener('click', () => {
+      // 点击非激活状态下的 tab nav 时
+      if (!item.classList.contains('tabs-nav-item-active')) {
+        bar.style.width = `${item.offsetWidth}px`
+        bar.style.left = `${item.offsetLeft}px`
+
+        const currentTabNav = document.querySelector('.tabs-nav-item-active');
+        currentTabNav.classList.remove('tabs-nav-item-active')
+        item.classList.add('tabs-nav-item-active')
+
+        // 切换tab时，清空要被切换的tab content 的显示状态，同时添加隐藏状态
+        const currentTabPanel = document.querySelector('.tabs-content-item-active');
+        currentTabPanel.classList.add('tabs-content-item-hidden')
+        currentTabPanel.classList.remove('tabs-content-item-active')
+
+        dataObj['content'][index].classList.add('tabs-content-item-active')
+        dataObj['content'][index].classList.remove('tabs-content-item-hidden')
+      }
+    })
+  })
+
+</script>
+
+</html>
