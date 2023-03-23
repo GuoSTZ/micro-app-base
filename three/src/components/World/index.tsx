@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useRef } from 'react';
 import { createCamera } from './creators/camera';
 import { createCube } from './creators/cube';
+import { createMeshGroup } from './creators/meshGroup';
 import { createScene } from './creators/scene';
 import { createRenderer } from './creators/renderer';
 import { createLights } from './creators/lights';
@@ -36,10 +37,13 @@ export default (props: WorldProps) => {
       deg: 30
     }
   });
+  const meshGroup = createMeshGroup();
+
   const {mainLight, ambientLight} = createLights()
   const controls = createControls(camera, renderer.domElement)
 
-  scene.add(cube, mainLight, ambientLight)
+  // scene.add(cube, mainLight, ambientLight)
+  scene.add(mainLight, ambientLight, meshGroup)
 
   useEffect(() => {
     ref.current.appendChild(renderer.domElement)
@@ -51,7 +55,7 @@ export default (props: WorldProps) => {
   }, [])
   
   const {start, stop} = useMemo(() => {
-    return loop(camera, scene, renderer, [controls])
+    return loop(camera, scene, renderer, [controls, meshGroup])
   }, [])
 
   useEffect(() => {
