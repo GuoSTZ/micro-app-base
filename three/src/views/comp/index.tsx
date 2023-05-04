@@ -1,8 +1,9 @@
 import React from 'react';
 import World from '../../components/World';
+import Car from '../../components/Car';
 
 export default () => {
   return (
-    <World animation={{start: true}}/>
+    <Car animation={{start: true}}/>
   )
 }
