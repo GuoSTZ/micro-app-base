@@ -12,12 +12,12 @@ import { throttle, cloneDeep } from 'lodash';
 
 export interface EchartsProps {
   id: string;
-  option: echarts.EChartOption;
+  option: echarts.EChartsOption;
   style?: React.CSSProperties;
 }
 
 export interface ChartsRefInstance {
-  setOption: (option: echarts.EChartOption) => void;
+  setOption: (option: echarts.EChartsOption) => void;
 }
 
 export default React.forwardRef((props: EchartsProps, ref: React.Ref<ChartsRefInstance>): React.ReactElement => {
@@ -26,7 +26,7 @@ export default React.forwardRef((props: EchartsProps, ref: React.Ref<ChartsRefIn
 
   useImperativeHandle(ref, () => {
     return {
-      setOption(opt: echarts.EChartOption) {
+      setOption(opt: echarts.EChartsOption) {
         if (instance.current) {
           instance.current.setOption(opt);
         }
