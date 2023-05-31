@@ -1,3 +1,4 @@
+/** 创建灯光 */
 import { 
   AmbientLight,
   DirectionalLight,

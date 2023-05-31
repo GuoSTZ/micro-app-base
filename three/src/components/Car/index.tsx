@@ -1,13 +1,15 @@
 import React, { useEffect, useMemo, useRef } from 'react';
-import { createCamera } from './creators/camera';
-import { createCube } from './creators/cube';
-import { createMeshGroup } from './creators/meshGroup';
-import { createScene } from './creators/scene';
-import { createRenderer } from './creators/renderer';
-import { createLights } from './creators/lights';
-import { createControls } from './creators/controls';
-import { Resizer } from './utils/Resizer';
-import { loop } from './utils/loop';
+import {
+  createCamera,
+  createCube,
+  createMeshGroup, 
+  createScene, 
+  createLights, 
+  createControls, 
+  createRenderer
+} from '../_utils/creators';
+import { Resizer } from '../_utils/Resizer';
+import { loop } from '../_utils/loop';
 import './index.less';
 
 interface WorldProps {

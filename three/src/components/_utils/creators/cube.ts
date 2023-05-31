@@ -89,8 +89,6 @@ export function createCube(props: cubeProps = {}) {
     const radiansPerSecondY = MathUtils.degToRad(animation.deg[1] || 0);
     const radiansPerSecondZ = MathUtils.degToRad(animation.deg[2] || 0);
 
-    console.log(radiansPerSecondX, radiansPerSecondY, radiansPerSecondZ );
-
     (cube as typeof cube & { tick: Function }).tick = (delta) => {
       // increase the cube's rotation each frame
       cube.rotation.x += radiansPerSecondX * delta;
@@ -103,6 +101,7 @@ export function createCube(props: cubeProps = {}) {
 }
 
 const createMatetial = materialProps => {
+  // 材质加载，目前还未放出属性
   const textureLoader = new TextureLoader()
   // const texture = textureLoader.load('/images/uv-test-bw.png')
   const material = new MeshStandardMaterial({

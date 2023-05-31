@@ -1,3 +1,4 @@
+// 设置tick
 import { Clock } from "three";
 
 const clock = new Clock();
@@ -5,7 +6,7 @@ const clock = new Clock();
 export const loop = (camera, scene, renderer, update) => {
   const updatables = Array.isArray(update) ? update : []
 
-  const tick = () => {
+  const injectTick = () => {
     const delta = clock.getDelta()
 
     for (const object of updatables) {
@@ -15,7 +16,7 @@ export const loop = (camera, scene, renderer, update) => {
   
   const start = () => {
     renderer.setAnimationLoop(() => {
-      tick()
+      injectTick()
       renderer.render(scene, camera)
     });
   }
