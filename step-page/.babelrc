@@ -1,0 +1,16 @@
+{
+  "presets": [
+    "@babel/preset-env",
+    "@babel/preset-react"
+    // "@babel/preset-tyscript"
+  ],
+  "plugins": [
+    // "react-refresh/babel",
+    [
+      "@babel/plugin-transform-runtime",
+      {
+        "regenerator": true
+      }
+    ]
+  ]
+}

@@ -15,7 +15,8 @@
       "vue-app",
       "game",
       "login",
-      "three"
+      "three",
+      "step-page"
     ]
   },
   "private": true,
