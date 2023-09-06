@@ -1,0 +1,18 @@
+[
+  {
+    "path": "/*",
+    "element": "ListContainer"
+  },
+  {
+    "path": "add",
+    "element": "FormContainer"
+  },
+  {
+    "path": "edit/:id",
+    "element": "FormContainer"
+  },
+  {
+    "path": "detail/:id",
+    "element": "DetailContainer"
+  }
+]

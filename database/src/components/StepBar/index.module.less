@@ -1,0 +1,28 @@
+.step-bar {
+  position: relative;
+  height: 100%;
+
+  &-content {
+    margin-top: 16px;
+    padding: 16px 16px 16px 0;
+  }
+
+  &-btns {
+    &-default {
+
+    }
+
+    &-fixed {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+    }
+
+    > button {
+      &:not(:last-child) {
+        margin-right: 8px;
+      }
+    }
+  }
+}

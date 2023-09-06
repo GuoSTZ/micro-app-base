@@ -1,0 +1,27 @@
+{
+  "descriptions": {
+    "bordered": true,
+    "column": 2,
+    "title": "查看"
+  },
+  "columns": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "title": "姓名",
+        "dataIndex": "name"
+      },
+      "age": {
+        "type": "string",
+        "title": "年龄",
+        "dataIndex": "age"
+      },
+      "address": {
+        "type": "string",
+        "title": "地址",
+        "dataIndex": "address"
+      }
+    }
+  }
+}
