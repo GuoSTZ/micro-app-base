@@ -1,27 +1,55 @@
 import { Button } from 'antd';
-import React, { useEffect, useState, memo } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import * as actions from '@/action';
 import Toolbar from '@/components/Toolbar';
 import DataTable from '@/components/DataTable';
 import Panel from '@/components/Panel';
-import useTableData from '@/hooks/useTableData';
 import { locale } from '@/locales';
 import TableOperation from '@/components/TableOperation';
+import { IPage } from '@/interface';
+import { useReducer } from '@/hooks';
 import './index.less';
 
-const ListView = (props) => {
+interface IListPage extends IPage { }
+
+const ListView = (props: IListPage) => {
   const navigate = useNavigate();
-  const [tableData, setTableData] = useTableData();
-  const [selectedRowKeys, setSelectedRowKeys] = useState([]);
-  const [selectedRows, setSelectedRows] = useState([]);
+  const { actions } = props;
+  const reducer = useReducer();
+  const { items, page } = reducer;
 
   useEffect(() => {
-    console.log(props, '=====')
+    actions.fetchPage({})
   }, [])
 
   const columns = [
-
+    {
+      key: 'id',
+      dataIndex: 'id',
+      title: 'id'
+    },
+    {
+      key: 'name',
+      dataIndex: 'name',
+      title: '名称',
+    },
+    {
+      key: 'age',
+      dataIndex: 'age',
+      title: '年龄',
+    },
+    {
+      key: 'operation',
+      title: "操作",
+      render: (text: unknown, record) => {
+        return (
+          <TableOperation>
+            <Button onClick={() => navigate(`edit/${record.id}`)}>{locale("common.operations.edit")}</Button>
+            <Button onClick={() => navigate(`detail/${record.id}`)}>{locale("common.operations.detail")}</Button>
+          </TableOperation>
+        )
+      }
+    }
   ];
 
   return (
@@ -31,14 +59,10 @@ const ListView = (props) => {
       </Toolbar>
       <DataTable
         rowKey={'id'}
-        dataSource={tableData.items}
+        dataSource={items}
         columns={columns}
-        page={tableData.page}
-        handler={{
-          setSelectedRowKeys, 
-          setSelectedRows
-        }}
-        rowSelection={null}
+        page={page}
+        // rowSelection={null}
       />
     </Panel>
   )

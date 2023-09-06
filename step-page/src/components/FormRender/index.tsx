@@ -1,36 +1,37 @@
 import React, { useEffect } from 'react';
 import {
-  PreviewText,
+  ArrayCards,
+  ArrayCollapse,
+  ArrayItems,
+  ArrayTable,
+  ArrayTabs,
+  Cascader,
+  Checkbox,
+  DatePicker,
+  Editable,
+  Form,
+  FormButtonGroup,
+  FormCollapse,
+  FormGrid,
   FormItem,
+  FormLayout,
+  FormStep,
+  FormTab,
   Input,
   NumberPicker,
   Password,
+  PreviewText,
   Radio,
   Reset,
   Select,
   SelectTable,
   Space,
+  Submit,
   Switch,
   TimePicker,
   Transfer,
   TreeSelect,
-  Upload,
-  Form,
-  ArrayTable,
-  FormButtonGroup,
-  FormCollapse,
-  FormGrid,
-  FormLayout,
-  FormStep,
-  FormTab,
-  Submit,
-  DatePicker,
-  Cascader,
-  Checkbox,
-  ArrayCards,
-  ArrayItems,
-  ArrayTabs,
-  Editable
+  Upload
 } from '@formily/antd'
 import {
   createForm,
@@ -39,12 +40,7 @@ import {
 import { Form as IForm } from '@formily/core/esm/models/Form';
 import { createSchemaField } from '@formily/react';
 import { action } from '@formily/reactive';
-import * as formilyAntd from '@formily/antd';
-import * as formilyCore from '@formily/core';
-import * as formilyReact from '@formily/react';
-import * as formilyReactive from '@formily/reactive';
-import * as onFormEffects from '@formily/core/esm/effects/onFormEffects';
-import * as onFieldEffects from '@formily/core/esm/effects/onFieldEffects';
+import { onFormInit, onFormMount } from '@formily/core'
 import {
   ArrayBaseAddition,
   ArrayBaseRemove,
@@ -53,9 +49,8 @@ import {
   ArrayBaseIndex
 } from './components/CustomArrayBaseComponent';
 
-const { onFormInit, onFormMount } = onFormEffects;
 
-export interface FormRenderProps {
+export interface McFormilyProps {
   /** Form 实例获取 */
   getForm?: (form: IForm<any>) => any;
   /** JSON 数据 */
@@ -90,6 +85,7 @@ const useFormCollapse = (activeKey: any) => FormCollapse?.createFormCollapse?.(a
 const SchemaField = createSchemaField({
   components: {
     ArrayCards,
+    ArrayCollapse,
     ArrayItems,
     ArrayTabs,
     ArrayTable,
@@ -132,7 +128,7 @@ const SchemaField = createSchemaField({
   }
 });
 
-const FormRender = React.forwardRef((props: FormRenderProps, ref: any) => {
+const FormRender = React.forwardRef((props: McFormilyProps, ref: any) => {
   const {
     getForm,
     schema = {},
@@ -177,23 +173,20 @@ const FormRender = React.forwardRef((props: FormRenderProps, ref: any) => {
     const customComp: any = {};
     for (let key in components) {
       const Comp = components[key];
-      customComp[key] = (props: any) => <Comp {...props} form={baseform} />
+      customComp[key] = (props: any) => <Comp {...props} formilyForm={baseform} />
     }
     return customComp;
   }
 
   return (
-    <Form form={baseform} {...schema.form || {}} wrapperCol={8}>
+    <Form form={baseform} {...schema.form || {}}>
       <SchemaField {...otherProps} schema={schema.schema || {}} components={handleCustomComp()} />
     </Form>
   )
 })
 
 export default FormRender;
-export { onFieldEffects, onFormEffects };
-export {
-  formilyAntd,
-  formilyCore,
-  formilyReact,
-  formilyReactive,
-}
+export * as formilyAntd from '@formily/antd';
+export * as formilyCore from '@formily/core';
+export * as formilyReact from '@formily/react';
+export * as formilyReactive from '@formily/reactive';

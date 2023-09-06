@@ -1,34 +1,41 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useImperativeHandle } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Button } from 'antd';
-import * as actions from '@/action';
 import Panel from '@/components/Panel';
-import FormRender from '@/components/FormRender';
+import StepBar from '@/components/StepBar';
 import { locale } from '@/locales';
-import Toolbar from '@/components/Toolbar';
+import FirstForm from './stepView/FirstForm';
+import SecondInfo from './stepView/SecondInfo';
+import ThreeForm from './stepView/ThreeForm';
+import FourDesc from './stepView/FourDesc';
 import './index.less';
 
+const steps = [
+  {
+    title: '用户信息',
+    content: <FirstForm initialValues={{username: 'aaaa'}} />,
+  },
+  {
+    title: '表格信息展示',
+    content: <SecondInfo />,
+  },
+  {
+    title: 'ip信息',
+    content: <ThreeForm />,
+  },
+  {
+    title: '全部数据展示',
+    content: <FourDesc />,
+  },
+];
 
 let form;
-
 export default () => {
   const navigate = useNavigate();
   const params = useParams();
-  const [formSchmea, setFormSchema] = useState({});
 
   useEffect(() => {
 
   }, [])
-
-  const handleSubmit = () => {
-    form?.submit()
-      .then(values => {
-        
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }
 
   const goBack = () => {
     navigate(-1)
@@ -38,13 +45,21 @@ export default () => {
     <Panel
       className='formView'
       title={params.id ? locale("common.operations.edit") : locale("common.operations.new")}
-      footer={
-        <Toolbar className='formView-footer'>
-          <Button onClick={() => navigate(-1)} key={1}>{locale("common.operations.back")}</Button>
-          <Button type="primary" onClick={handleSubmit} key={2}>{locale("common.operations.ok")}</Button>
-        </Toolbar>
-      }>
-      <FormRender schema={formSchmea} getForm={baseForm => form = baseForm} />
+      footer={false}>
+      <StepBar 
+        items={steps}
+        btnProps={{
+          cancel: {
+            onClick: goBack,
+          },
+          finish: {
+            onClick: (e, ref, value) => {
+              console.log(value);
+              // goBack();
+            }
+          }
+        }}
+      />
     </Panel>
   )
 }

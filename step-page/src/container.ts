@@ -12,7 +12,7 @@ import ListView from './views/List.view'
 const injectActionStatus = () => {
   const keys = Object.keys(Action)
   const { actionStatus, ...restAction } = Action
-  const actions = {}
+  const actions = {} as typeof restAction;
   keys?.map((key: string) => {
     if (typeof restAction[key] === 'function') {
       actions[key] = Inject(restAction[key])(actionStatus[key])

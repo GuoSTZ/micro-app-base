@@ -12,10 +12,6 @@ interface IPage {
 }
 
 export interface DataTableProps extends TableProps<object> {
-  /** json 配置 */
-  schema?: object
-  /** 自定义组件 */
-  components?: any
   /** 分页参数 */
   page?: IPage
   /** 传入行数据选中处理函数 */
@@ -67,14 +63,6 @@ const DataTable: React.FC<DataTableProps> = props => {
       return `共${total}条`
     },
     size: 'middle' as 'small' | 'default',
-  }
-
-  const renderCustomComp = (Comp: any) => (column: any) => {
-    column.render = (text: any, record: any, index: number) => {
-      const payload = { text, record, index }
-      return <Comp {...payload} />
-    }
-    return column
   }
 
   return (

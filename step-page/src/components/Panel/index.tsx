@@ -6,7 +6,7 @@ export interface PanelProps {
   className?: string;
   title?: React.ReactNode;
   handleCancel?: React.MouseEventHandler<HTMLAnchorElement> & React.MouseEventHandler<HTMLButtonElement>;
-  footer?: React.ReactNode;
+  footer?: React.ReactNode | false;
 }
 
 export default (props: React.PropsWithChildren<PanelProps>) => {

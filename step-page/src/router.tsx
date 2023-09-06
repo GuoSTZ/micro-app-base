@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {memo} from 'react'
 import routesJson from '@/schema/routes.json'
 import * as Containers from './container'
 
