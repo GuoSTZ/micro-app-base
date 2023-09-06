@@ -8,6 +8,7 @@ import SecondInfo from './stepView/SecondInfo';
 import ThreeForm from './stepView/ThreeForm';
 import FourDesc from './stepView/FourDesc';
 import './index.less';
+import { Button } from 'antd';
 
 const steps = [
   {
@@ -54,11 +55,16 @@ export default () => {
           },
           finish: {
             onClick: (e, ref, value) => {
-              console.log(value);
-              // goBack();
+              goBack();
             }
           }
         }}
+        footerRender={footer => (
+          <>
+            {footer}
+            <Button>123</Button>
+          </>
+        )}
       />
     </Panel>
   )

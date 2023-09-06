@@ -30,6 +30,8 @@ export interface StepBarProps extends StepsProps {
   stepsValue?: {
     [key: string]: any;
   }
+  /** 底部按钮扩展 */
+  footerRender?: (footer: ReactNode, current: number) => ReactNode;
 }
 
 type RefTick = {
@@ -43,12 +45,14 @@ type RefTick = {
 
 const StepBar = (props: StepBarProps) => {
   const {
-    btnPosition,
+    btnPosition = 'fixed',
     btnProps = {},
     className,
     current: _current,
+    footerRender,
     items,
-    stepsValue: _stepsValue
+    stepsValue: _stepsValue,
+    ...restProps
   } = props;
   const ref = useRef<{ tick: (fc: RefTick) => void }>();
   const [current, setCurrent] = useState(_current ?? 0);
@@ -121,39 +125,47 @@ const StepBar = (props: StepBarProps) => {
     }
   }
 
+  const footer = (
+    <>
+      <StepsButton
+        type="primary"
+        renderable={getRenderable(next.renderable) && current < items.length - 1}
+        {...next}
+        onClick={nextClick}>
+        下一步
+      </StepsButton>
+      <StepsButton
+        type="primary"
+        renderable={getRenderable(finish.renderable) && current === items.length - 1}
+        {...finish}
+        onClick={finishClick}>
+        完成
+      </StepsButton>
+      <StepsButton
+        renderable={getRenderable(prev.renderable) && current > 0}
+        {...prev}
+        onClick={prevClick}>
+        上一步
+      </StepsButton>
+      <StepsButton
+        {...cancel}
+        renderable={getRenderable(cancel.renderable)}
+        onClick={cancelClick}>
+        取消
+      </StepsButton>
+    </>
+  )
+
+  const mergedFooterRender = footerRender ? footerRender : () => footer
+
   return (
     <div className={mergedClassName}>
-      <Steps current={current} items={items} />
+      <Steps current={current} items={items} {...restProps}/>
       <div className={styles['step-bar-content']}>
         {cloneChildren(items[current].content)}
       </div>
-      <div className={styles['step-bar-btns']}>
-        <StepsButton
-          type="primary"
-          renderable={getRenderable(next.renderable) && current < items.length - 1}
-          {...next}
-          onClick={nextClick}>
-          下一步
-        </StepsButton>
-        <StepsButton
-          type="primary"
-          renderable={getRenderable(finish.renderable) && current === items.length - 1}
-          {...finish}
-          onClick={finishClick}>
-          完成
-        </StepsButton>
-        <StepsButton
-          renderable={getRenderable(prev.renderable) && current > 0}
-          {...prev}
-          onClick={prevClick}>
-          上一步
-        </StepsButton>
-        <StepsButton
-          {...cancel}
-          renderable={getRenderable(cancel.renderable)}
-          onClick={cancelClick}>
-          取消
-        </StepsButton>
+      <div className={`${styles['step-bar-btns']} ${styles[`step-bar-btns-${btnPosition}`]}`}>
+        {mergedFooterRender(footer, current)}
       </div>
     </div>
   );
