@@ -1,20 +1,17 @@
-const path = require('path')
 const { theme } = require('antd/lib');
 const { convertLegacyToken } = require('@ant-design/compatible/lib');
+const htmlWebpackPlugin = require('html-webpack-plugin');
 
 const { defaultAlgorithm, defaultSeed } = theme;
 
 const mapToken = defaultAlgorithm(defaultSeed);
 const v4Token = convertLegacyToken(mapToken);
 
-
 const { merge } = require('webpack-merge')
 const {
   PORT,
-  NAME_SPACE,
   common,
   resolveApp,
-  addHtmlWebpackPlugin,
 } = require('./webpack.common')
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
@@ -27,7 +24,7 @@ module.exports = merge(common, {
   devtool: 'eval-cheap-module-source-map',
   cache: {
     type: 'filesystem', // 启用持久化缓存
-    cacheDirectory: resolveApp('.cache'), // 缓存文件存放的位置
+    cacheDirectory: resolveApp('../.cache'), // 缓存文件存放的位置
     name: 'development-cache',
     buildDependencies: {
       // 缓存失效的配置
@@ -48,7 +45,7 @@ module.exports = merge(common, {
     allowedHosts: 'all',
     static: {
       // 托管的静态资源文件, 可通过数组的方式托管多个静态资源文件
-      directory: resolveApp('./public'),
+      directory: resolveApp('../public'),
     },
     client: {
       progress: true, // 在浏览器端打印编译进度
@@ -89,6 +86,13 @@ module.exports = merge(common, {
   },
   plugins: [
     // new webpack.HotModuleReplacementPlugin(), // HRM: 模块热替换
-    addHtmlWebpackPlugin({ env, namespace: NAME_SPACE }),
+    new htmlWebpackPlugin({
+      env,
+      cssString: '',
+      publicPath: '/',
+      filename: 'index.html',
+      hash: true, // 为CSS文件和JS文件引入时，添加唯一的hash，破环缓存非常有用
+      template: resolveApp('../public/index.ejs'),
+    })
   ],
 })
