@@ -34,7 +34,7 @@ const getConfig = (name: string) => {
 const rootRoutes: Array<RoutesType> = [
   {
     path: `/`,
-    element: <Navigate to={'login'} />
+    element: <Navigate to={`${`${NAME_SPACE}`}/home`} />
   },
   {
     path: `/login`,
