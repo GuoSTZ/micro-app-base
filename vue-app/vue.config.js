@@ -4,6 +4,7 @@ module.exports = defineConfig({
   assetsDir: "static",
   runtimeCompiler: true,
   publicPath: './',
+  outputDir: 'build',
   devServer: {
     host: "0.0.0.0",
     // 端口号
