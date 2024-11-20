@@ -16,8 +16,7 @@
       "game",
       "login",
       "three",
-      "step-page",
-      "database"
+      "step-page"
     ]
   },
   "private": true,
