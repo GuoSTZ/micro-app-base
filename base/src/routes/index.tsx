@@ -2,18 +2,9 @@ import React from 'react';
 import { Outlet, Navigate, useRoutes } from 'react-router-dom';
 import LayoutWrapper from '@/components/LayoutWrapper';
 import MicroApp from '@/components/MicroApp';
+import { RoutesType } from '@/interface';
 import moduleRoutes from './module';
 import { config } from './config';
-
-export type RoutesType = {
-  id?: string;
-  key?: string;
-  path: string;
-  name?: string;
-  icon?: JSX.Element;
-  element?: JSX.Element;
-  children?: Array<RoutesType>;
-}
 
 const Menu = () => {
   const view = useRoutes(moduleRoutes)

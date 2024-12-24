@@ -1,7 +1,7 @@
 import {HomeOutlined, MailOutlined, PhoneOutlined, CalendarOutlined} from '@ant-design/icons';
 import React from 'react';
 import MicroApp from '@/components/MicroApp';
-import { RoutesType } from '.';
+import { RoutesType } from '@/interface';
 import { config } from './config';
 import i18n, { locale } from '@/locales';
 import Home from '@/views/Home';

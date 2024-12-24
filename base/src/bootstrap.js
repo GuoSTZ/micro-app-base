@@ -25,7 +25,7 @@ if(ENV === 'development') {
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={ENV === 'development' ? '' : '/g-app'}>
       <App />
     </BrowserRouter>
   </React.StrictMode>
